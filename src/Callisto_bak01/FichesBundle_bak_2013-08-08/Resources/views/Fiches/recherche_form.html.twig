@@ -1,0 +1,194 @@
+{# src/Callisto/FichesBundle/Resources/views/Fiches/recherche_form.html.twig #}
+
+{% extends "CallistoFichesBundle:Default:index.html.twig" %}
+
+{% block callisto_content %}
+
+<script type="text/javascript" src="{{ asset('bundles/callistofiches/js/selectToUISlider.jQuery.js') }}"></script>
+
+<link href="{{ asset('bundles/callistofiches/css/ui.slider.extras.css') }}" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+$(function() {
+  $('select#recherche_fiches_datefrom, select#recherche_fiches_dateto').selectToUISlider(
+    {
+      labels: 10
+    }
+  );
+});
+</script>
+<style>.ui-slider {margin-top: 10px; margin-bottom: 30px;}
+table.results {
+  font-family:arial;
+  background-color: #CDCDCD;
+  margin:20px 0pt 0px;
+  font-size: 8pt;
+  width: 100%;
+  text-align: left;
+  border: 2px solid #CDCDCD;
+}
+table.results thead tr th, table.results tfoot tr th {
+  background-color: #F0F6F9;
+  border: 1px solid #CDCDCD;
+  font-size: 8pt;
+  padding: 4px;
+}
+table.results thead tr .header {
+  background-image: url(bg.gif);
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+}
+table.results tbody td {
+  color: #3D3D3D;
+  padding: 4px;
+  background-color: #FFF;
+  vertical-align: top;
+}
+/*FJ*/
+table.results tbody tr div {
+  color: #3D3D3D;
+  padding: 0px;
+  background-color: lightgray;
+  vertical-align: top;
+}
+
+@media print {
+  table.results tbody tr div {
+    color: #3D3D3D;
+    padding: 0px;
+    background-color: lightgray;
+    vertical-align: top;
+  }
+}
+
+h2 {
+  color: gray;
+}
+
+#label_handle_recherche_fiches_datefrom, #label_handle_recherche_fiches_dateto {
+    width: 40px; 
+    float: left; 
+}
+
+#recherche_fiches_datefrom, #recherche_fiches_dateto {
+    width: 260px; 
+    float: left; 
+    margin-right: 10px;
+}
+
+.ui-slider {
+    clear: both;
+}
+
+.navy {
+    margin-bottom: 7px;
+}
+
+.navy strong {
+    color: navy;
+}
+
+</style>
+
+  <form method="post" {{ form_enctype(form) }}>
+
+    <div align="left">
+      <img src="{{ asset('bundles/callistofiches/images/icons/document_search.png') }}" alt="chercher une fiche">
+    </div>
+    <div align="center">
+      <h1>Moteur de recherche</h1>
+    </div>
+
+    <br />
+
+    <div class="row-fluid navy">
+        <div class="span12">
+            <strong>RECHERCHE PAR DATE</strong><br /><br />
+            {{ form_label(form.datefrom) }}
+            {{ form_widget(form.datefrom) }}
+            
+            {{ form_label(form.dateto) }}
+            {{ form_widget(form.dateto) }}
+        </div>
+    </div>
+    
+    <div class="row-fluid navy">
+        <div class="span12">
+            <strong>RECHERCHE PAR MOTS</strong>
+            {{ form_widget(form.titre, { 'attr': {'class': 'span12'} }) }}<br />
+        </div>
+    </div>
+    
+    <div class="row-fluid navy">
+        <div class="span6">
+            <strong>CULTURE / PERIODE</strong>
+            {{ form_widget(form.periode, { 'attr': {'class': 'span11'} }) }}
+        </div>
+        <div class="span6">
+            <strong>CATEGORIE</strong>
+            {{ form_widget(form.categorie, { 'attr': {'class': 'span11'} }) }}
+        </div>
+    </div>
+    
+    <div class="row-fluid navy">
+        <div class="span6">
+            <strong>MATERIAU</strong>
+            {{ form_widget(form.materiau, { 'attr': {'class': 'span11'} }) }}
+        </div>
+    </div>
+    
+    {{ form_widget(form._token) }}
+    <input type="submit" value="Recherche" class="btn" />
+  </form>
+
+  <div class="container-fluid">
+        {% for fiche in fiches %}
+          {% if loop.index0 is even %}
+            <div class="row-fluid navy">
+          {% endif %}
+              <div class="span6">
+                <table class="results">
+                  <thead>
+                    <tr>
+                      <th colspan="2" align="center" width="100%">
+                        <strong>
+                          <a href="{{ path('fiche', { 'id': fiche.id }) }}" class="liste">
+                            {{ fiche.titre }}
+                          </a>
+                        </strong>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td width="10%" height="120">
+                        <a href="{{ path('fiche', { 'id': fiche.id }) }}" class="liste">
+                          <img src="{% path fiche.image, 'thumb' %}" width="32" border="0">
+                        </a>
+                      </td>
+                      <td>
+                        {{ fiche.materiau }} [<strong>{{ fiche.dateFrom }}</strong> <C3><A0> <strong>{{ fiche.dateTo }}</strong>]
+                        <p align="justify"><em>{{ fiche.description }}</em></p>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+          {% if loop.index0 is odd %}
+            </div>
+          {% endif %}
+
+        {% else %}
+          {% if resultat %}
+          <div class="span12">
+            <div class="well">
+                <h3>Aucune fiche trouvée</h3>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+    </div>
+  </div>
+{% endblock %}

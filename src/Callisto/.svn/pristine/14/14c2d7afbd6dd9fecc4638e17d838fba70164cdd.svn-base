@@ -1,0 +1,27 @@
+{% block content %}
+<h3>Votre panier:</h3>
+
+<style>
+    body {font-family: sans-serif; font-size: 11px;}
+    table {font-family: sans-serif; font-size: 11px;}
+    table tr td {vertical-align: top;}
+</style>
+
+<table>
+    {% for fiche in titles %}
+        <tr><td>
+            <h3>{{ attribute(fiche, 'title')|raw }}</a></h3>
+            <table>
+            <tr><td><b>Dates:</b> </td><td> {{ attribute(fiche, 'dates')|raw }}</td></tr>
+            <tr><td><b>Catégorie:</b> </td><td>{{ attribute(fiche, 'categorie') }}</td></tr>
+            <tr><td><b>Lieu de conservation:</b> </td><td>{{ attribute(fiche, 'conservation') }}</td></tr>
+            <tr><td><b>Source de l'image:</b> </td><td>{{ attribute(fiche, 'source_image')|raw }}</td></tr>
+            <tr><td><b>URL de la fiche:</b> </td><td><a href="{{ attribute(fiche, 'url') }}">{{ attribute(fiche, 'url') }}</a></td></tr>
+            </table>
+        </td></tr>
+        <tr><td>
+            <br />
+        </td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

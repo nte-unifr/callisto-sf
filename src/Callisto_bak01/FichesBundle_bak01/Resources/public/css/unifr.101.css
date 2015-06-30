@@ -1,0 +1,153 @@
+/*------------------- CSS UNIFR.CH -------------------*/
+/*-- CSS GENERIC www.unifr.ch/*                   	--*/
+/*-- LAST UPDATE: 11.09.2006                        --*/
+/*----------------------------------------------------*/
+
+@import url(./common.101.css);
+
+
+/*----------------------------------------------------*/
+/*-- STYLES DEPENDANT DE L'UO/DU SITE               --*/
+/*----------------------------------------------------*/
+
+/*-- Bandeau et texte pour l'identité ----------------*/
+#bandeau {
+	position:relative;
+	background-image: url(http://unifr.ch/images/crpr/unifr.png);
+	background-repeat: no-repeat;
+	margin-left: 200px;
+	padding: 0px;
+	height: 60px; }
+
+#address {
+	background-color: #006699;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	float: left;
+	width: 190px;
+	height:45px;
+	margin: 0px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #006699; }
+
+#address .txt {
+	margin-top:22px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #006699;
+	vertical-align: text-bottom;
+	text-align: left; }
+
+
+/*-- Barre de navigation -----------------------------*/
+#navigBarre {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #006699;
+	margin: 0px;
+	padding: 0px;
+	clear: both;
+	height:21px;
+	position:relative;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #006699;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #006699; }
+
+#navigBarre a{
+	display:block;
+	font-weight: bold;
+	padding-right: 7px;
+	padding-left: 7px;
+	line-height: 21px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #006699;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #FFFFFF; }
+#navigBarre a:hover{ background-color: #E4EDF2; color: #006699; }
+
+#nbLeft a {
+	font-weight: normal;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: 15px;
+	border-bottom-width: 0px;
+	display:block;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #006699;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #FFFFFF;  }
+
+#nbLeft a:hover{ background-color: #E4EDF2; color: #006699; }
+
+#nbRight a{
+	display:block;
+	font-weight: bold;
+	padding-right: 7px;
+	padding-left: 7px;
+	line-height: 21px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #006699;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #FFFFFF; }
+
+#nbRight a:hover{ background-color: #E4EDF2; color: #006699; }
+
+
+/*-- COLOR, couleur du bandeau -----------------------*/
+ ul.arrowColor li {
+	padding-left: 9px;
+	background-image: url(http://unifr.ch/images/list/1000/arrowColor.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0.1em;
+	padding-bottom: 2px; }
+ul.squareColor li {
+	padding-left: 9px;
+	background-image: url(http://unifr.ch/images/list/1000/squareColor.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0.1em;
+	padding-bottom: 2px;  }
+
+
+/* Titres --------------------------------------------*/
+h1 {
+	font-family: "Trebuchet MS",Trebuchet, Tahoma, Verdana, sans-serif;
+	font-size: 18px;
+	color: #006699;
+	font-weight: normal;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	padding-left: 0px;
+	margin: 0px; }
+h2 {
+	font-family: "Trebuchet MS",Trebuchet, Tahoma, Verdana, sans-serif;
+	font-size: 14px;
+	color: #006699;
+	font-weight: bold; }
+h3 {
+	font-family: "Trebuchet MS",Trebuchet, Tahoma, Verdana, sans-serif;
+	font-size: 12px;
+	color: #006699;
+	font-weight: bold;
+	margin: 0px; }
+h4 {
+	font-family: "Trebuchet MS",Trebuchet, Tahoma, Verdana, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	font-weight: normal; }

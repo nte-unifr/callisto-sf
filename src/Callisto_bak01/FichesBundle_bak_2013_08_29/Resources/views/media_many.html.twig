@@ -1,0 +1,7 @@
+{% extends 'SonataDoctrineORMAdminBundle:CRUD:show_orm_many_to_many.html.twig' %}
+
+{% block field%}
+    {% for element in value %}
+        {% media element.media, 'small' %}
+    {% endfor %}
+{% endblock %}

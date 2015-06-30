@@ -1,0 +1,443 @@
+{# src/Callisto/FichesBundle/Resources/views/Default/fiche.html.twig #}
+
+{% extends "CallistoFichesBundle:Default:index.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+        <script src='{{ asset('bundles/callistofiches/js/jquery.elevateZoom-3.0.3.min.js') }}'></script>
+{% endblock %}
+
+{% block callisto_sideblock %}
+    {% if fiches_recherche|length > 0 and fiche.id in recherche %}
+    <div>
+        <span><strong>RECHERCHE</strong></span><br><br>
+        <ul id="mycarousel1" class="jcarousel jcarousel-skin-tango">
+            {% for rechch in fiches_recherche %}
+            {% if rechch.image %}
+            <li>
+                <a href="{{ path('fiche', { 'id': rechch.id }) }}" title="{{ rechch.titre }}">
+                    {% media rechch.image, 'small' with {'alt':  rechch.titre, 'title':  rechch.titre} %}
+                </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        <br><br>
+    </div>
+    {% endif %}
+    {% if fiche.fichesassociees|length > 0 %}
+    <div>
+        <span><strong>FICHES ASSOCI&eacute;ES</strong></span><br><br>
+        <ul id="mycarousel2" class="jcarousel jcarousel-skin-tango">
+            {% for associee in fiche.fichesassociees %}
+            {% if associee.image %}
+            <li>
+                <a href="{{ path('fiche', { 'id': associee.id }) }}" title="{{ associee.titre }}">
+                    {% media associee.image, 'small' with {'alt':  associee.titre, 'title':  associee.titre} %}
+                </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        <br><br>
+    </div>
+    {% endif %}
+    <div>
+        <span><strong>IMAGES SIMILAIRES</strong></span><br><br>
+        <ul id="mycarousel3" class="jcarousel jcarousel-skin-tango">
+            {% for sim in similaires %}
+            {% if sim.image %}
+            <li>
+                <a href="{{ path('fiche', { 'id': sim.id }) }}">
+                    {% thumbnail sim.image, 'small' with {'alt':  sim.titre, 'title':  sim.titre} %}
+                </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block callisto_sideblock2 %}
+    <div>
+        <span><strong>IMAGES SIMILAIRES</strong></span><br><br>
+        <ul id="mycarousel" class="jcarousel jcarousel-skin-tango">
+            {% for sim in similaires %}
+            {% if sim.image %}
+            <li>
+                <a href="{{ path('fiche', { 'id': sim.id }) }}">
+                    {% thumbnail sim.image, 'small' with {'alt':  sim.titre, 'title':  sim.titre} %}
+                </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block callisto_content %}
+            {% if fiche.id in recherche %}
+                {% if(prev) %}
+                <a href="{{ path('fiche', { 'id': prev, 'form': nav_type }) }}">
+                    <<< r&eacute;sultat pr&eacute;c&eacute;dent
+                </a>
+                {% else %}
+                    <span style="color:#aaa"><<< r&eacute;sultat pr&eacute;c&eacute;dent</span>
+                {% endif %}
+                
+                {% if(recherche) %}
+                &nbsp; {% if nav_type != 'a' %}<a href="{{ path('recherche') }}">{% else %}<a href="{{ path('rechercheavancee') }}">{% endif %}<strong>Retour aux r&eacute;sultats</strong></a> &nbsp; 
+                {% endif %}
+                
+                {% if(next) %}
+                <a href="{{ path('fiche', { 'id': next, 'form': nav_type }) }}">
+                     r&eacute;sultat suivant >>>
+                </a>
+                {% else %}
+                    <span style="color:#aaa">r&eacute;sultat suivant >>></span>
+                {% endif %}
+            {% endif %}
+
+        
+        <script type="text/javascript" src="{{ asset('bundles/callistofiches/js/jQuery-Storage-API/jquery.storageapi.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/callistofiches/js/jstorage.js') }}"></script>
+        <div style="float: right; text-align: right;" class="droite">
+            <a href="{{ path('print', { 'id': fiche.id }) }}">
+                Version imprimable
+            </a>
+            <div id="memory">
+                <a href="#" onclick="javascript:addToBasket({{ fiche.id }})">S&eacute;lectionner la fiche</a>
+            </div>
+            <div id="no-memory" style="display: none; color: #CCC">
+                S&eacute;lectionner la fiche
+            </div>
+            <a data-toggle="modal" href="#panier">Panier</a>
+        </div>
+        <div id="panier" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Votre panier</h3>
+                </div>
+                <div class="modal-body">
+                    <div id="panier-body"></div>
+                    <br />
+                    <div class="accordion" id="accordion2">
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                Envoyer par e-mail
+                                </a>
+                            </div>
+                            <div id="collapseTwo" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    {{ form_start(emailform) }}
+                                        {{ form_errors(emailform) }}
+                                        {{ form_row(emailform.email) }}
+                                        <div style="display: none;">{{ form_row(emailform.message2) }}</div>
+                                    {{ form_end(emailform) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <script>
+            displayBasket();
+        </script>
+        <div id="formMail" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Envoyer la s&eacute;lection par e-mail</h3>
+                </div>
+                <div class="modal-body" id="panier-body">
+                    
+                </div>
+              </div>
+            </div>
+        </div>
+
+    <div>
+        <h1 id="title">Fiche n°{{ fiche.id }} : {{ fiche.titre|raw }}</h1>
+    </div>
+
+{% if(alert) %}
+    <div class="row">
+        <div class="alert fade in alert-success span8 offset1">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            <strong>{{ alert }}</strong>
+        </div>
+    </div>
+{% endif %}
+
+    <table>
+        <tr>
+            <td width="190">
+                <h2><strong>ILLUSTRATION</strong></h2>
+            </td>
+            <td style="padding-left: 10px;">
+                <h2><strong>DESCRIPTION</strong></h2>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 8px;">
+                <div>
+<!--                    <a class="fancybox" rel="group" href="{% path fiche.image, 'big' %}">-->
+                    <script>
+                        function popwindow(url, id) {
+                            if (id == 'image_principale') {
+                                var height = document.getElementById(id).height * 3; 
+                                var width = document.getElementById(id).width * 3;
+                            } else {
+                                var height = document.getElementById(id).height * 6; 
+                                var width = document.getElementById(id).width * 6;
+                            }
+                            window.open(url,'Illustration','height='+height+',width='+width);
+                        }
+                    </script>
+                    <a href="{% path fiche.image, 'big' %}" onclick="popwindow('{% path fiche.image, 'big' %}', 'image_principale');return false;">
+                        {% set big_image %} {% path fiche.image, 'big' %} {% endset %}
+                        {% media fiche.image, 'small' with {'alt':  fiche.titre, 'id': 'image_principale', 'data-zoom-image': big_image} %}
+                    </a>
+                    <p>
+                        <img src="{{ asset('bundles/callistofiches/images/arrow.gif') }}" border="0" style="vertical-align:middle;" />
+                        <a href="{% path fiche.image, 'ppt' %}" onclick="popwindow('{% path fiche.image, 'ppt' %}', 'image_principale');return false;">PPT</a>
+
+                        <img src="{{ asset('bundles/callistofiches/images/arrow.gif') }}" border="0" style="vertical-align:middle;" />
+                        <a href="{% path fiche.image, 'reference' %}" onclick="popwindow('{% path fiche.image, 'reference' %}', 'image_principale');return false;">Original</a>
+                    </p>
+                    {% if fiche.images|length > 0 %}
+                    <div id="gallery" "="" 500pxfloat:left;="" style="width=">
+                        <a class="elevatezoom-gallery active" data-zoom-image="{% path fiche.image, 'big' %}" data-image="{% path fiche.image, 'small' %}" data-update="" href="#"><img src="{% path fiche.image, 'small' %}"></a>
+                        {% for annexe in fiche.images %}
+                        <a class="elevatezoom-gallery active" data-zoom-image="{% path annexe.media, 'big' %}" data-image="{% path annexe.media, 'small' %}" data-update="" href="#"><img src="{% path annexe.media, 'small' %}"></a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <script>
+                        $('#image_principale2').elevateZoom({
+                                cursor: "crosshair",
+                                zoomWindowFadeIn: 500,
+                                zoomWindowFadeOut: 750,
+                                zoomWindowPosition: 11,
+                                responsive: true,
+                                scrollZoom : true,
+                               });
+
+                        $("#image_principale").elevateZoom({
+                            gallery : "gallery",
+                            galleryActiveClass: "active",
+                            cursor: "crosshair",
+                            zoomWindowFadeIn: 500,
+                            zoomWindowFadeOut: 750,
+                            zoomWindowPosition: 5,
+                            responsive: true,
+                            scrollZoom : true,
+                        }); 
+
+                        $("#select").change(function(e){
+                            var currentValue = $("#select").val();
+                            if(currentValue == 0){    
+                                smallImage = "{% path fiche.image, 'small' %}";
+                                largeImage = "{% path fiche.image, 'big' %}";
+                            }
+                            {% for annexe in fiche.images %}
+                            if(currentValue == {{ loop.index }}){    
+                                smallImage = "{% path annexe.media, 'small' %}";
+                                largeImage = "{% path annexe.media, 'big' %}";
+                            }
+                            {% endfor %}
+                            // Example of using Active Gallery
+                            $('#gallery a').removeClass('active').eq(currentValue-1).addClass('active');
+
+                            var ez =   $('#image_principale').data('elevateZoom');	  
+
+                            ez.swaptheimage(smallImage, largeImage); 
+                             
+                        });
+
+                    </script>
+                </div>
+            </td>
+            <td style="vertical-align: top; padding-left: 10px;">
+                <p>
+                    {% if fiche.description %}
+                        {{ fiche.description|raw }}
+                    {% else %}
+                        Aucune description
+                    {% endif %}
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <div>
+        <h2><strong>CULTURE / PÉRIODE</strong></h2>
+        <p>
+            {% if fiche.periode %}
+                {{ fiche.periode.nom }}
+            {% else %}
+                Inconnue
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>DATES</strong></h2>
+        <p id="dates">
+            De <strong>{{ fiche.datefrom }}</strong> à <strong>{{ fiche.dateto }}</strong>
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>MATÉRIAU</strong><br /></h2>
+        <p>
+            {% if fiche.materiau %}
+                {{ fiche.materiau.nom }}
+            {% else %}
+                Inconnu
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>CATÉGORIE</strong></h2>
+        <p id="categorie">
+            {% if fiche.categorie %}
+                {{ fiche.categorie.nom }}
+            {% else %}
+                Inconnue
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>DIMENSIONS</strong></h2>
+        <p>
+            {% if fiche.dimensions %}
+                {{ fiche.dimensions }}
+            {% else %}
+                Inconnues
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>PROVENANCE / LIEU DE FABRICATION</strong></h2>
+        <p>
+            {% if fiche.provenance %}
+                {{ fiche.provenance }}
+            {% else %}
+                Inconnu
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>LIEU DE CONSERVATION</strong></h2>
+        <p id="conservation">
+            {% if fiche.region %}
+                {{ fiche.region }}
+            {% else %}
+                Inconnu
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>SOURCE DE L'IMAGE</strong></h2>
+        <p id="source_image">
+            {% if fiche.source %}
+                {{ fiche.source|raw }}
+            {% else %}
+                Inconnue
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>BIBLIOGRAPHIE</strong></h2>
+        <p>
+            {% if fiche.bibliographie %}
+                {{ fiche.bibliographie|raw }}
+            {% else %}
+                Inconnue
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>IMAGES ANNEXES</strong></h2>
+        <p>
+<!--            <div class="annexes">
+                <a class="fancybox" href="{% path fiche.image, 'ppt' %}">{% media fiche.image, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a> 
+                &nbsp;<a href="{% path fiche.image, 'ppt' %}">PPT</a><br />
+                &nbsp;<a href="{% path fiche.image, 'big' %}">Orginal</a>
+            </div>
+-->
+            {% for annexe in fiche.images %}
+            {% set id_image %}image_annexe_{{ loop.index}}{% endset %}
+            <div class="annexes">
+<!--                <a class="fancybox" rel="group" href="{% path annexe.media, 'ppt' %}">{% media annexe.media, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a> -->
+                <a href="{% path annexe.media, 'ppt' %}" onclick="popwindow('{% path annexe.media, 'big' %}', '{{ id_image }}');return false;">{% media annexe.media, 'thumb' with {'alt': fiche.titre, 'align': 'left', 'id': id_image} %}</a> 
+                &nbsp;<a href="{% path annexe.media, 'ppt' %}" onclick="popwindow('{% path annexe.media, 'ppt' %}', 'image_principale');return false;">PPT</a><br />
+                &nbsp;<a href="{% path annexe.media, 'reference' %}" onclick="popwindow('{% path annexe.media, 'reference' %}', 'image_principale');return false;">Orginal</a>
+            </div>
+            {% endfor %}
+            <div class="clear"></div>
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>FICHES ASSOCIÉES</strong> ~ <strong>APERCU DES FICHES</strong></h2>
+        {% if c != 0 %}
+            <table>
+            {% for associee in fiche.fichesassociees %}
+                <tr>
+                    <td>
+                        {{ associee.id }}.
+                        <a href="{{ path('fiche', { 'id': associee.id, 'form': nav_type }) }}" target="_blank">{{ associee.titre }}</a>
+                    </td>
+                    <td>
+                        <a class="fancybox" href="{% path associee.image, 'big' %}">
+                            {% media associee.image, 'thumb' with {'alt':  associee.titre} %}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% else %}
+            <p>Aucune fiche associ&eacute;e.</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <h2><strong>FICHIERS ASSOCIÉS</strong></h2>
+        {% if fiche.fichiers %}
+            {% for fichier in fiche.fichiers %}
+                <p>
+                    <a href="{% path fichier.file, 'small' %}">
+                        {{ fichier.file.title }}
+                    </a>
+                </p>
+            {% endfor %}
+        {% else %}
+            <p>Aucun fichier associ&eacute;.</p>
+        {% endif %}
+    </div>
+
+    {% if fiche.montrerAuteur %}
+    <div>
+        <h2><strong>AUTEUR</strong></h2>
+        <p>
+            {{ fiche.auteur }}
+        </p>
+    </div>
+    {% endif %}
+
+{% endblock %}

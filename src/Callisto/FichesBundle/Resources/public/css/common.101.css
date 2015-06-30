@@ -1,0 +1,618 @@
+/*------------------- CSS UNIFR.CH -------------------*/
+/*-- COMMON PART                                   	--*/
+/*-- LAST UPDATE: 20061002                          --*/
+/*----------------------------------------------------*/
+
+
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*-- DIV ID / ZONES PRINCIPALES                     --*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+
+html { /* Force Vertical Scrollbar */
+	/* IE */
+	overflow-y: scroll; 
+	/* Moz */
+	height: 100%;
+	margin-bottom: 0.1em;
+}
+
+/*-- Total de la page, alignement centré -------------*/
+#webpage {
+	width: 800px;
+	margin: auto;
+	padding: auto;
+	text-align:left;
+}
+
+
+/*-- Bandeau et texte pour l'identité ----------------*/
+#identity {
+	margin 0;
+	padding: 0;
+	position:relative;
+	clear:both;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CCCCCC;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF; }
+	
+#identity #address a {
+  	text-decoration: none;
+ 	color: #FFFFFF;
+}
+#identity #address a:hover {
+  	text-decoration: underline;
+}
+	
+
+/*-- Signature au fond de la page --------------------*/
+#signature {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #999999;
+	text-align: center;
+	margin: 0px;
+	padding: 2px;
+	clear:both;
+	background-color: #FFFFFF;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #CCCCCC; }
+
+
+/*-- Colonne de gauche bleue -------------------------*/
+#colLeft {
+	background-color: #E4EDF2;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CCCCCC;
+	vertical-align: top;
+} 
+
+
+/*-- Barre de navigation -----------------------------*/
+
+#navigBarre ul{
+	margin: 0px;
+	padding: 0px;
+	text-transform: uppercase;
+	list-style:none;
+	letter-spacing: 0.1em;
+	float:left; }
+
+#navigBarre li{ float:left; }
+#navigBarre .last a { border-right-width: 0px; border-right-style: none; } 
+#navigBarre .first a  { border-left-width: 1px; border-left-style: solid; border-left-color: #FFFFFF; } 
+#navigBarre .left{
+	margin: 0px;
+	padding: 0px;
+	text-transform: capitalize;
+	font-size: 9px; }
+#navigBarre .left a {
+	font-weight: normal;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: 15px;
+	border-bottom-width: 0px; }
+#navigBarre .left li { display: inline; }
+
+* html #navigBarre { height: 21px; }
+* html #navigBarre a { height: 1px; float: left; }
+
+
+
+#nbLeft {
+	position:relative;
+	float: left;
+	width: 190px;
+	padding: 0 5px 0 5px; }
+	
+#nbLeft li{ float:left; display: inline; }
+
+#nbLeft ul{
+	margin: 0px;
+	padding: 3px 0 0 0px;
+	text-transform: capitalize;
+	list-style:none;
+	letter-spacing: 0.1em;
+	float:left; }
+	
+#nbRight {
+	position:relative;
+	margin-left: 200px; }
+	
+#nbRight ul{
+	margin: 0px;
+	padding: 0px;
+	text-transform: uppercase;
+	list-style:none;
+	letter-spacing: 0.1em;
+	float:left; }
+	
+#nbRight li{ float:left; }
+	
+
+
+
+/*-- Zone principale ---------------------------------*/
+#main {
+	position:absolute;
+	width:798px;
+	margin: 0;
+	padding: 0;
+	clear: both;
+	background-image: url(http://unifr.ch/images/background_main.gif);
+	background-repeat: repeat-y;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #FFFFFF;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+	border-bottom-color: #CCCCCC; }
+	
+	
+	
+/*-- Colonne centrale de contenu/menu ------------------*/
+
+#menu {
+	position:relative;
+	width: 190px;
+	float: left;
+	padding: 0 5px 0 5px; }
+	
+#content {
+	position:relative;
+	margin-left: 200px;
+	padding:10px;
+	line-height: 1.3em;
+ }
+
+* html #content { height: 1%; }
+
+/*-- La Une pour les home pages ----------------------*/
+#laUne .imgUne { margin: 0 10px 5px 0; }
+
+
+/*-- Search box --------------------------------------*/
+#sarchbox form {
+	margin: 0px; }
+#sarchbox input.text {
+	border: 1px solid #CCCCCC;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	padding: 1px; }
+
+
+
+
+
+
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*-- CLASS, LISTE ET PUCES                          --*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+
+/*-- COLOR, couleur du bandeau -----------------------*/
+ul.arrowColor {
+	padding-top: 0px; 
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none; } 
+ul.squareColor {
+	padding-top: 0px; 
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none; } 
+
+
+
+/*-- UNIFR, bleu unifr #006699 -----------------------*/
+ul.arrowUnifr {
+	padding-top: 0px; 
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none; } 
+ul.arrowUnifr li {
+	padding-left: 9px;
+	background-image: url(http://unifr.ch/images/list/arrowColor.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0.1em;
+	padding-bottom: 2px; }
+ul.squareUnifr {
+	padding-top: 0px; 
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none; } 
+ul.squareUnifr li {
+	padding-left: 9px;
+	background-image: url(http://unifr.ch/images/list/squareColor.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0.1em;
+	padding-bottom: 2px; }
+
+
+/*-- LIGHT GREY, gris clair, cadre des bo�tes ----------*/
+ul.arrowLG {
+	padding-top: 0px; 
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none; } 
+ul.arrowLG li {
+	padding-left: 9px;
+	background-image: url(http://unifr.ch/images/list/arrowLG.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0.1em;
+	padding-bottom: 2px; }
+ul.squareLG {
+	padding-top: 0px; 
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none; } 
+ul.squareLG li {
+	padding-left: 9px;
+	background-image: url(http://unifr.ch/images/list/squareLG.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0.1em;
+	padding-bottom: 2px; }
+
+
+/*-- DARK GREY, gris fonc�,couleur du texte ------------*/
+ul.arrowDG {
+	padding-top: 0px; 
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none; } 
+ul.arrowDG li {
+	padding-left: 9px;
+	background-image: url(http://unifr.ch/images/list/arrowDG.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0.2em;
+	padding-bottom: 2px; }
+ul.squareDG {
+	padding-top: 0px; 
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none; } 
+ul.squareDG li {
+	padding-left: 9px;
+	background-image: url(http://unifr.ch/images/list/squareDG.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0.1em;
+	padding-bottom: 2px; }
+
+
+
+/*-- unifr_sdmenu: menu hiérarchisé, basé sur http://www.dhtmlgoodies.com et box002 --------*/
+
+#unifr_sdmenu h2 {
+	background-color: #FFFFFF;
+	text-transform: uppercase;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	margin: 6px 0 6px 0;
+	padding: 0.3em 0 0.3em 0.1em;
+	color: #006699; }
+
+#unifr_sdmenu h3 {
+	color: #006699;
+	text-transform: uppercase;
+	margin: 6px 0 6px 0;
+	padding: 0.3em 0 0.3em 0.1em;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border-bottom-color: #FFFFFF;
+	font-weight: bold;	}
+	
+#unifr_sdmenu li{
+	list-style-type:none;
+	position:relative; }
+		
+#unifr_sdmenu ul{
+	margin:0px;
+	padding:0px;
+	position:relative; }
+
+#unifr_sdmenu div{
+	margin:0px;
+	padding:0px; }
+	
+#unifr_sdmenu {		
+	color: #333333;
+	text-align: left;
+	width: 180px; }
+
+#unifr_sdmenu a:link, #unifr_sdmenu a:visited{
+	text-decoration:none;	
+	display:block;
+	clear:both;
+	width:165px;	
+	padding-left:2px;	}
+	
+#unifr_sdmenu .slMenuItem_depth1{	/* Main menu items */
+	padding: 0.3em 0 0.3em 0.1em;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+	margin-top:1px;  }
+		
+#unifr_sdmenu .slMenuItem_depth2{	/* Sub menu items */
+	margin-top:1px;
+	font-size: 10px; }	
+	
+#unifr_sdmenu .slMenuItem_depth3{	/* Sub menu items */
+	margin-top:1px;
+	font-size: 10px;
+	font-style:italic; }	
+		
+#unifr_sdmenu .slMenuItem_depth4{	/* Sub menu items */
+	margin-top:1px;
+	font-size: 9px; }	
+	
+#unifr_sdmenu .slMenuItem_depth5{	/* Sub menu items */
+	margin-top:1px;
+	font-size: 9px;
+	font-style:italic; }
+
+#unifr_sdmenu .slideMenuDiv1 ul{
+	padding:1px; }
+	
+#unifr_sdmenu .slideMenuDiv2 ul{
+	margin-left:10px;
+	padding:1px; }
+		
+#unifr_sdmenu .slideMenuDiv3 ul{
+	margin-left:15px;
+	padding:1px; }
+
+#unifr_sdmenu .slMenuItem_depth4 ul{
+	margin-left:20px;
+	padding:1px; }
+
+
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*-- CLASS, BOXES                                   --*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+
+
+/*-- Boite 001: titre au sommet et fond arrondi-------*/
+.box001 h2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 12px;
+	font-weight: bold;	
+	color: #006699; 
+	background-image: url(http://unifr.ch/images/box/grey_180px_top_wf.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;	 }
+.box001 h3 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 12px;
+	font-weight: bold;	
+	color: #006699; 
+	background-image: url(http://unifr.ch/images/box/grey_180px_top.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC; }
+.box001 .student {
+	background-image: url(http://unifr.ch/images/box/student.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 65px; }
+.box001 .research01 {
+	background-image: url(http://unifr.ch/images/box/recherche01.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 65px; }
+.box001 .research02 {
+	background-image: url(http://unifr.ch/images/box/recherche02.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 65px; }
+.box001 {
+	background-image: url(http://unifr.ch/images/box/grey_180px_bottom.gif);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	width: 180px;
+	text-align: left;
+	margin: 0; 
+	padding: 0; }
+.box001_content {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	padding: 5px; }
+.box001_content a:link, .box001_content a:visited { text-decoration: none; color: #333333; }
+.box001_content a:hover { text-decoration: underline; color: #006699; }
+
+
+/*-- Boite 002: menu gauche, ligne separation --------*/
+.box002 {
+	color: #333333;
+	text-align: left;
+	width: 180px; }
+.box002 a:link, .box002 a:visited { text-decoration: none; }
+.box002 ul {
+	list-style: none; 
+	margin: 0;
+	padding: 0; }
+.box002 li{
+	padding: 0.3em 0 0.3em 0.1em;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;  }
+.box002 h2 {
+	background-color: #FFFFFF;
+	text-transform: uppercase;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	margin: 6px 0 6px 0;
+	padding: 0.3em 0 0.3em 0.1em;
+	color: #006699; }
+.box002 h3 {
+	color: #006699;
+	text-transform: uppercase;
+	margin: 6px 0 6px 0;
+	padding: 0.3em 0 0.3em 0.1em;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border-bottom-color: #FFFFFF;
+	font-weight: bold;	}
+
+
+/*-- Boite 003: menu droite, ligne separation --------*/
+.box003 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #6666666;
+	text-align: left;
+	padding: 3px;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 7px;	}
+.box003 ul a:link, .box003 ul a:visited { text-decoration: none; }
+.box003 ul a:hover, .box003 ul a:active { text-decoration: underline; } 
+.box003 .title {
+	background-color: #E4EDF2;
+	text-transform: uppercase;
+	color: #333333;
+	padding: 2px;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-bottom: 1px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC; }
+.box003 .subtitle {
+	text-transform: uppercase;
+	color: #333333;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 1px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC; }
+.box003 .subtitle2 {
+	text-transform: uppercase;
+	color: #333333;
+	font-weight: normal;
+	margin-top: 5px;
+	margin-bottom: 1px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC; }
+.box003 .subtitle3 {
+	color: #333333;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 1px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC; }
+.box003 .subtitle4 {
+	color: #333333;
+	font-weight: normal;
+	margin-top: 5px;
+	margin-bottom: 1px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;  }
+.box003 .9pix {
+	font-size: 9px; }
+
+
+
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*-- CLASS, GENERALITES                             --*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	background-color: #FFFFFF;
+	margin: 0px;
+	text-align:center;
+}
+	
+.greyCadre {
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+	border-left-color: #CCCCCC; }
+	
+
+
+/* Liens ---------------------------------------------*/
+*htm a {display:block;}
+a:link, a:visited {
+	text-decoration: underline;
+	color: #333333;	}
+a:hover, a:active {
+	text-decoration: underline;
+	color: #006699;	}
+
+
+/* bicolonne pour les news, avec trait au milieu -----*/
+.biCol1 {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CCCCCC;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 0px; }
+.biCol2 {
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-left: 5px; }
+
+/* break page */
+.breakafter {
+	page-break-after: always;
+}
+.breakbefore {
+	page-break-before: always;
+}
+
+
+
+

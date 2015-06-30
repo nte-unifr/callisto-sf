@@ -1,0 +1,69 @@
+{# src/Callisto/FichesBundle/Resources/views/Default/fiche.html.twig #}
+
+{% extends "CallistoFichesBundle:Default:index.html.twig" %}
+
+{% block callisto_content %}
+
+
+    <div align="left">
+        <img src="{{ asset('bundles/callistofiches/images/icons/contact2.png') }}" alt="chercher une fiche">
+    </div>
+    <div align="left">
+        <h1>Conception et réalisation</h1>
+    </div>
+
+        <table id="mytable" class="tablesorter" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="2" style="color:navy;"><strong>Département des Sciences de l'Antiquité</strong><br></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">Prof. V. Dasen</td>
+
+            </tr>
+            <tr>
+                <td>
+                    Courriel : <a href="https://mail.google.com/mail/u/0/?view=cm&amp;fs=1&amp;tf=1&amp;to=veronique.dasen@unifr.ch" title="[GMCP] Compose a new mail to veronique.dasen@unifr.ch" target="_blank" rel="noreferrer">veronique.dasen@unifr.ch</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Tél : +41 (0)26 300.78.62</td>
+            </tr>
+
+            <tr>
+                <td>Site web : <a href="http://www.unifr.ch/scant/archeologie/recherche_publications_dasen.html" target="_blank">sciences de l'antiquité</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+        <table id="mytable" class="tablesorter" cellpadding="1" cellspacing="1">
+        <thead>
+            <tr>
+                <th colspan="2" style="color:navy;"><strong>Centre NTE</strong><br></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">François Jimenez</td>
+
+            </tr>
+            <tr>
+                <td>
+                    Courriel : <a href="https://mail.google.com/mail/u/0/?view=cm&amp;fs=1&amp;tf=1&amp;to=francois.jimenez@unifr.ch" title="[GMCP] Compose a new mail to francois.jimenez@unifr.ch" target="_blank" rel="noreferrer">francois.jimenez@unifr.ch</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Tél : +41 (0)26 300.83.58</td>
+            </tr>
+
+            <tr>
+                <td>Site web : <a href="http://www.unifr.ch/nte" target="_blank">www.unifr.ch/nte</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

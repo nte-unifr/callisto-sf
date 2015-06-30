@@ -1,0 +1,196 @@
+{# src/Callisto/FichesBundle/Resources/views/Default/fiche.html.twig #}
+
+{% extends "CallistoFichesBundle:Default:index.html.twig" %}
+
+{% block callisto_sideblock %}
+    <div>
+        <span><strong>IMAGES SIMILAIRES</strong></span><br><br>
+        <ul id="mycarousel" class="jcarousel jcarousel-skin-tango">
+            {% for sim in similaires %}
+            <li>
+                <a href="{{ path('fiche', { 'id': sim.id }) }}">
+                    {% thumbnail sim.image, 'small' %}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block callisto_content %}
+
+    <div>
+        <h1>{{ fiche.titre }}</h1>
+    </div>
+
+    <table>
+        <tr>
+            <td>
+                <h2><strong>ILLUSTRATION</strong></h2>
+            </td>
+            <td>
+                <h2><strong>DESCRIPTION</strong></h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <a class="fancybox" href="{% path fiche.image, 'big' %}">
+                        {% media fiche.image, 'small' %}
+                    </a>
+                </div>
+                <p>
+                    <img src="{{ asset('bundles/callistofiches/images/arrow.gif') }}" border="0" style="vertical-align:middle;" />
+                    <a href="{% path fiche.image, 'ppt' %}" target="_blank">PPT</a>
+
+                    <img src="{{ asset('bundles/callistofiches/images/arrow.gif') }}" border="0" style="vertical-align:middle;" />
+                    <a href="{% path fiche.image, 'big' %}" target="_blank">Original</a>
+                </p>
+            </td>
+            <td style="vertical-align: top">
+                <p>
+                    {% if fiche.description %}
+                        {{ fiche.description }}
+                    {% else %}
+                        Aucune description
+                    {% endif %}
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <div>
+        <h2><strong>DIMENSIONS</strong></h2>
+        <p>
+            {% if fiche.dimensions %}
+                {{ fiche.dimensions }}
+            {% else %}
+                Inconnues
+            {% endif %}
+        </p>
+    </div>
+
+
+    <div>
+        <h2><strong>DATES</strong></h2>
+        <p>
+            De <strong>{{ fiche.datefrom }}</strong> à <strong>{{ fiche.dateto }}</strong>
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>CULTURE / PÉRIODE</strong></h2>
+        <p>
+            {% if fiche.periode.nom %}
+                {{ fiche.periode.nom }}
+            {% else %}
+                Inconnue
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>CATÉGORIE</strong></h2>
+        <p>
+            {% if fiche.categorie.nom %}
+                {{ fiche.categorie.nom }}
+            {% else %}
+                Inconnue
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>MATÉRIAU</strong><br /></h2>
+        <p>
+            {% if fiche.materiau.nom %}
+                {{ fiche.materiau.nom }}
+            {% else %}
+                Inconnu
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>PROVENANCE / LIEU DE FABRICATION</strong></h2>
+        <p>
+            {% if fiche.provenance %}
+                {{ fiche.provenance }}
+            {% else %}
+                Inconnu
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>LIEU DE CONSERVATION</strong></h2>
+        <p>
+            {% if fiche.region %}
+                {{ fiche.region }}
+            {% else %}
+                Inconnu
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>SOURCE DE L'IMAGE</strong></h2>
+        <p>
+            {% if fiche.source %}
+                {{ fiche.source|raw }}
+            {% else %}
+                Inconnue
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>BIBLIOGRAPHIE</strong></h2>
+        <p>
+            {% if fiche.bibliographie %}
+                {{ fiche.bibliographie|raw }}
+            {% else %}
+                Inconnue
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <h2><strong>FICHES ASSOCIÉES</strong> ~ <strong>APERCU DES FICHES</strong></h2>
+        {% if c != 0 %}
+            <table>
+            {% for associee in fiche.fichesassociees %}
+                <tr>
+                    <td>
+                        {{ associee.id }}.
+                        <a href="{{ path('fiche', { 'id': associee.id }) }}" target="_blank">{{ associee.titre }}</a>
+                    </td>
+                    <td>
+                        <a class="fancybox" rel="group" href="{% path associee.image, 'big' %}">
+                            {% media associee.image, 'thumb' %}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% else %}
+            <p>Aucune fiche associée.</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <h2><strong>FICHIERS ASSOCIÉS</strong></h2>
+        {% if fiche.fichiers %}
+            {% for fichier in fiche.fichiers %}
+                <p>
+                    <a href="{% path fichier.file, 'small' %}">
+                        {{ fichier.file.title }}
+                    </a>
+                </p>
+            {% endfor %}
+        {% else %}
+            <p>Aucun fichier associé.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+#bandeau {
+	position: relative;
+	background-image: url('../images/unifr.png');
+	background-repeat: no-repeat;
+	margin-left: 200px;
+	padding: 0px;
+	height: 60px;
+}

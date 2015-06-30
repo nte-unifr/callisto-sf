@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:edit.html.twig' %}
+
+{% block form %}
+{% endblock form %}
+
+{% block formactions %}
+{% endblock formactions %}

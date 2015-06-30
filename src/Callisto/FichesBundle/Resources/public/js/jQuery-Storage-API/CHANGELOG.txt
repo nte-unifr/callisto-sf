@@ -1,0 +1,19 @@
+1.2.1
+ Change keywords in manifest
+
+1.2.0
+ Add fallback with cookies
+ Add cookieStorage
+ Fix value returned by set() on namespace
+
+1.1.1
+ Fix on get() exception
+ Add minified version
+
+1.1.0
+ First parameter of get() & delete() can be an array
+ First parameter of set() can be an object
+ Correct initialisation of namespace (create it if not exists) and deleteAll truncate it (before, namespace was deleted)
+
+1.0.0
+ Initial version

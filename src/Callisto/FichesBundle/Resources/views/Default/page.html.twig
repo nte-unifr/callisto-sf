@@ -1,0 +1,21 @@
+{# src/Callisto/FichesBundle/Resources/views/Default/page.html.twig #}
+
+{% extends "CallistoFichesBundle:Default:index.html.twig" %}
+
+{% block callisto_content %}
+
+
+
+    <div align="left">
+        <h1>{% if page.title is defined %}{{ page.title }}{% endif %}</h1>
+    </div>
+
+    <div align="left">
+        {% if page.introduction is defined %}{{ page.introduction|raw }}{% endif %}
+    </div>
+
+    <div align="left">
+        <p>{% if page.text is defined %}{{ page.text|raw }}{% endif %}</p>
+    </div>
+
+{% endblock %}

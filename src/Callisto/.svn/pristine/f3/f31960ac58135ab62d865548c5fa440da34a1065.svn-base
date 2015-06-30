@@ -1,0 +1,8 @@
+{# CallistoFichesBundle:Admin:list__action_request_publication.html.twig #}
+
+{% if admin.hasRoute('publication') and not admin.isGranted('ROLE_ADMIN_FICHE_ADMIN', object) and not object.publication and not object.public %}
+    <a href="{{ admin.generateObjectUrl('publication', object) }}" class="btn edit_link btn-small" title="{{ 'Demande de publication'|trans({}, 'SonataAdminBundle') }}">
+        <i class="icon-ok"></i>
+        {{ 'Demande de publication'|trans({}, 'SonataAdminBundle') }}
+    </a>
+{% endif %}
