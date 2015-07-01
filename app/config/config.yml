@@ -20,7 +20,7 @@ framework:
     session:         ~
     fragments:       ~
     session:
-        save_path: /home/sessions #%kernel.root_dir%/var/sessions
+        save_path: %kernel.root_dir%/var/sessions
 
 # Twig Configuration
 twig:
@@ -134,7 +134,7 @@ sonata_admin:
         delete:  SonataAdminBundle:CRUD:delete.html.twig
 
         # default values of helper templates
-        short_object_description: SonataAdminBundle:Helper:short-object-description.html.twig  
+        short_object_description: SonataAdminBundle:Helper:short-object-description.html.twig
 
         # default values of block templates, they should extend the base_block template
         list_block: SonataAdminBundle:Block:block_admin_list.html.twig
@@ -167,9 +167,6 @@ sonata_media:
                 small: { width: 190 , quality: 70 }
                 ppt:   { width: 600 , quality: 70 }
                 big:   { width: 1200, quality: 85 }
-    cdn:
-        server:
-            path: /callisto/uploads/media # http://media.sonata-project.org/
     filesystem:
         local:
             directory:  %kernel.root_dir%/../web/uploads/media
@@ -181,11 +178,11 @@ sonata_media:
 
 swiftmailer:
     transport:  mail
-    encryption: 
-    auth_mode:  
-    host:       
-    username:   
-    password:   
+    encryption:
+    auth_mode:
+    host:
+    username:
+    password:
 
 
 sonata_doctrine_orm_admin:

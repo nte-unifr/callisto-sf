@@ -21,3 +21,8 @@ monolog:
             type:  stream
             path:  %kernel.logs_dir%/%kernel.environment%.log
             level: debug
+
+sonata_media:
+    cdn:
+        server:
+             path: /callisto/uploads/media
