@@ -5,7 +5,7 @@ namespace Callisto\FichesBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Page
+ * Link
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -38,7 +38,7 @@ class Link
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -54,14 +54,14 @@ class Link
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -77,14 +77,14 @@ class Link
     public function setValue($value)
     {
         $this->value = $value;
-    
+
         return $this;
     }
 
     /**
      * Get value
      *
-     * @return string 
+     * @return string
      */
     public function getValue()
     {
