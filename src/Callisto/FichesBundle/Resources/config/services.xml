@@ -24,7 +24,7 @@
         </service>
 
         <service id="callisto.fiches.admin.fiches" class="Callisto\FichesBundle\Admin\FichesAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Fiches" label="Fiches" />
+            <tag name="sonata.admin" manager_type="orm" group="Contenu" label="Fiches" />
             <argument />
             <argument>Callisto\FichesBundle\Entity\Fiches</argument>
             <argument>CallistoFichesBundle:FichesCRUD</argument>
@@ -60,9 +60,16 @@
         </service>
 
         <service id="callisto.fiches.admin.pages" class="Callisto\FichesBundle\Admin\PagesAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Pages" label="Pages" />
+            <tag name="sonata.admin" manager_type="orm" group="Contenu" label="Pages" />
             <argument />
             <argument>Callisto\FichesBundle\Entity\Pages</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
+        <service id="callisto.fiches.admin.links" class="Callisto\FichesBundle\Admin\LinksAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Contenu" label="Liens" />
+            <argument />
+            <argument>Callisto\FichesBundle\Entity\Link</argument>
             <argument>SonataAdminBundle:CRUD</argument>
         </service>
 
