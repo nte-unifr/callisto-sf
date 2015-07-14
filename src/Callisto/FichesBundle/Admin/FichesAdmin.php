@@ -36,7 +36,7 @@ class FichesAdmin extends Admin
     {
         switch ($name) {
             case 'edit':
-                
+
                 $id = $this->request->get('id');
                 $user = (string)$this->container->get('security.context')->getToken()->getUser()->getUsername();
                 $now = new \DateTime('now');
@@ -46,7 +46,7 @@ class FichesAdmin extends Admin
                 $session = $this->request->getSession();
                 $em = $this->container->get('doctrine.orm.entity_manager');
                 $verrous = $em->getRepository('CallistoFichesBundle:Verrou')->findBy(array('objet' => 'taxon', 'objet_id' => $id));
-                
+
                 $lock = false;
                 foreach($verrous as $verrou) {
                     if (($verrou->getEcheance() > $now) && ($verrou->getUtilisateur() != $user)) {
@@ -123,11 +123,8 @@ class FichesAdmin extends Admin
         if ($id) {
             $record = $em->getRepository('CallistoFichesBundle:Fiches')->find($id);
             // test sécurité si pas rôle admin
-            if ( !($this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_ADMIN')
-                ||
-                $this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_EDITOR'))
-                && $record->getAuteur()->getId() != $this->container->get('security.context')->getToken()->getUser()->getId()
-                ) {
+            if (!($this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_ADMIN') || $this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_EDITOR'))
+                && $record->getAuteur()->getId() != $this->container->get('security.context')->getToken()->getUser()->getId()) {
                     $restriction = true;
             }
 
@@ -139,9 +136,6 @@ class FichesAdmin extends Admin
                 $verrous = $em->getRepository('CallistoFichesBundle:Verrou')->findBy(array('objet' => 'taxon', 'objet_id' => $id));
 
                 foreach($verrous as $verrou) {
-        #            echo "<pre>";
-        #            echo var_dump($verrou);
-        #            echo "</pre>";
                     if (($verrou->getEcheance() > $now) && ($verrou->getUtilisateur() != $user)) {
                         $lock = true;
                     }
@@ -152,10 +146,10 @@ class FichesAdmin extends Admin
                 }
             }
         }
-        
+
 #        if( (count($session_data) >= 2) && ($session_data[1] !== $user) && ($session_data[0] > $now->format('Y-m-d H:i:s')) ){
         if( $lock || $restriction ){
-            
+
             if ($lock) {
                 $session->getFlashBag()->add('sonata_flash_error', 'ATTENTION!!! Cet enregistrement a été édité par une autre personne il y a moins de 10 minutes!');
             }
@@ -163,9 +157,9 @@ class FichesAdmin extends Admin
 #                $session->getFlashBag()->add('sonata_flash_error', 'ATTENTION!!! Vous n\'avez les droits pour accéder à cet enregistrement.');
                 throw new AccessDeniedHttpException('Accès restreint à l\'auteur de la fiche ou aux admin');
             }
-            
+
         } else { // jusque là test pour verrou/mutex
-        
+
             if ($id) {
                 // *********************** nouveau Verrou dans la BDD
                 $new_verrou = new Verrou;
@@ -175,33 +169,17 @@ class FichesAdmin extends Admin
                 $new_verrou->setUtilisateur($user);
                 $em->persist($new_verrou);
                 $em->flush();
-                // *********************** 
+                // ***********************
             }
             $formMapper
+                ->with('Fiches')
                     ->add('titre');
-
-            if(
-                $this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_ADMIN')
-                ||
-                $this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_EDITOR')
-                ) {
+            if($this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_ADMIN') || $this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_EDITOR')) {
                     $formMapper->add('public', null, array('required' => false))
                                ->add('publication', null, array('required' => false));
             }
             $formMapper
                     ->add('description', null, array('attr' => array('class' => 'ckeditor')))
-
-#                    ->add('description', 'sonata_formatter_type', array(
-#                        'event_dispatcher' => $formMapper->getFormBuilder()->getEventDispatcher(),
-#                        'format_field'   => 'descriptionFormatter',
-#                        'source_field'   => 'rawDescription',
-#                        'source_field_options'      => array(
-#                            'attr' => array('class' => 'span5', 'rows' => 20)
-#                        ),
-#                        'target_field'   => 'description',
-#                        'listener'       => true,
-#                    ))
-
                     ->add('datefrom')
                     ->add('dateto')
                     ->add('dimensions')
@@ -209,15 +187,13 @@ class FichesAdmin extends Admin
                     ->add('region', null, array('label' => 'Lieu de conservation'))
                     ->add('source', null, array('attr' => array('class' => 'ckeditor')))
                     ->add('bibliographie', null, array('attr' => array('class' => 'ckeditor')));
-            if(
-                $this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_ADMIN')
-                ||
-                $this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_EDITOR')
-                ) {
+            if($this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_ADMIN') || $this->isGranted('ROLE_CALLISTO_FICHES_ADMIN_FICHES_EDITOR')) {
                     $formMapper
                         ->add('auteur')
                         ->add('montrer_auteur', null, array('required' => false));
             }
+            $formMapper
+                ->end();
             $formMapper
                 ->with('Medias')
                     ->add('image', 'sonata_type_model_list', array('required' => false), array('link_parameters' => array('context' => 'default', 'provider'=>'sonata.media.provider.image')))
