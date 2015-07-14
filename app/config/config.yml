@@ -195,3 +195,6 @@ sonata_doctrine_orm_admin:
           html: CallistoFichesBundle::list_html.html.twig
         show:
           html: CallistoFichesBundle::show_html.html.twig
+
+vich_uploader:
+    db_driver: orm

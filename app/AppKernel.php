@@ -45,6 +45,7 @@ class AppKernel extends Kernel
             //2nd step
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Fresh\DoctrineEnumBundle\FreshDoctrineEnumBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
 
         );
 
