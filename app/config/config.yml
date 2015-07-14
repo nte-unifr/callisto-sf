@@ -123,7 +123,7 @@ sonata_block:
         sonata.block.service.rss:
 
 sonata_admin:
-    title:      Callisto Admin Panel
+    title:      Callisto Admin
     templates:
         ## default global templates
 #        layout:  SonataAdminBundle::standard_layout.html.twig
