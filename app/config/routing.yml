@@ -5,22 +5,22 @@ callisto_fiches:
     prefix:   /
 
 recherche:
-    pattern: /recherche
+    path: /recherche
 
 contact:
-    pattern: /contact
+    path: /contact
 
 faq:
-    pattern: /faq
+    path: /faq
 
 fiche:
-    pattern: /fiche/{id}
+    path: /fiche/{id}
 
 print:
-    pattern: /print/{id}
+    path: /print/{id}
 
 home:
-    pattern: /
+    path: /
 
 # Internal routing configuration to handle ESI
 #_internal:
