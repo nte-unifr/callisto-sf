@@ -54,6 +54,7 @@ class DocumentsAdmin extends Admin
         $formMapper
             ->add('title', null, array('required' => true, 'label' => 'Titre'))
             ->add('type', null, array('required' => true, 'label' => 'Type'))
+            ->add('file', 'vich_file', array('required' => true, 'label' => false, 'allow_delete'  => false))
         ;
     }
 

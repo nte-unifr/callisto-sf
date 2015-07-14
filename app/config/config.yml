@@ -26,6 +26,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form_themes:
+        # other form themes
+        - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -198,3 +201,12 @@ sonata_doctrine_orm_admin:
 
 vich_uploader:
     db_driver: orm
+
+    mappings:
+        document:
+            uri_prefix:         /files/documents
+            upload_destination: %kernel.root_dir%/../web/files/documents
+
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
