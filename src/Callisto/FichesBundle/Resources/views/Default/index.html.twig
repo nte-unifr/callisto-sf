@@ -18,6 +18,8 @@
         <!-- Add jcarousel -->
         <link rel="stylesheet" href="{{ asset('bundles/callistofiches/css/skin.css') }}" type="text/css" media="screen" />
         <link rel="stylesheet" href="{{ asset('bundles/callistofiches/css/style.css') }}" type="text/css" media="screen" />
+        <!-- Font awesome -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     {% endblock %}
 
     {% block javascripts %}
@@ -93,13 +95,12 @@
                                     <li><a href="{{ path('home') }}">Home</a></li>
                                     <li><a href="{{ path('recherche') }}">Recherche</a></li>
                                     <li><a href="{{ path('page_show', {id: 4} ) }}">Notices d'utilisation</a></li>
-                                    <li><a href="{{ path('page_show', {id: 5} ) }}">Information</a></li>
-                                    <li><a href="{{ path('contact') }}">Contact</a></li>
-                                    <li><a href="{{ path('faq') }}">FAQ</a></li>
+                                    <li><a href="{{ path('resources') }}">Ressources</a></li>
                                 </ul>
                                 <ul class="nav pull-right">
-                                    <li><a href="http://unifr.ch">Unifr</a></li>
-                                    <li><a href="http://nte.unifr.ch">Centre NTE</a></li>
+                                    <li><a href="{{ path('page_show', {id: 5} ) }}">Infos</a></li>
+                                    <li><a href="{{ path('faq') }}">FAQ</a></li>
+                                    <li><a href="{{ path('contact') }}">Contact</a></li>
                                 </ul>
                             </div>
 

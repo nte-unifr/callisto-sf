@@ -1,0 +1,40 @@
+{# src/Callisto/FichesBundle/Resources/views/Resources/index.html.twig #}
+
+{% extends "CallistoFichesBundle:Default:index.html.twig" %}
+
+{% block callisto_content %}
+    <div class="page-header">
+        <h1>Ressources</h1>
+    </div>
+
+    {% if ((links|length)+(tbs|length)+(sts|length)) < 1 %}
+        <p>Aucune ressource disponible</p>
+    {% endif %}
+
+    {% if links|length > 0 %}
+        <h2>Ressources en ligne</h2>
+        <ul class="nav nav-tabs nav-stacked resources">
+            {% for link in links %}
+                <li><a href="{{ link.value }}">{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if tbs|length > 0 %}
+        <h2>Bibliographies thématiques</h2>
+        <ul class="nav nav-tabs nav-stacked resources">
+            {% for tb in tbs %}
+                <li><a href="{{ vich_uploader_asset(tb, 'file') }}"><i class="fa fa-file-pdf-o"></i> {{ tb.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if sts|length > 0 %}
+        <h2>Documents PDF</h2>
+        <ul class="nav nav-tabs nav-stacked resources">
+            {% for st in sts %}
+                <li><a href="{{ vich_uploader_asset(st, 'file') }}"><i class="fa fa-file-pdf-o"></i> {{ st.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

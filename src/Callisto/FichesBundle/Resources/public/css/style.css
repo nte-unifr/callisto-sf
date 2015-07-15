@@ -87,3 +87,11 @@ h1 {
 #webpage2 {
     text-align: left;
 }
+
+.resources {
+    margin-top: 10px;
+    font-size: 13px;
+}
+.resources a {
+    text-decoration: none;
+}
