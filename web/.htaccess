@@ -1,64 +1,12 @@
-
-
-#RewriteEngine On
-
-#RewriteCond %{HTTP_HOST} ^www3\.unifr\.ch$ [NC]
-#RewriteRule ^(.*)$ http://elearning.unifr.ch/callisto/$1 [L,R]
-
-AuthType shibboleth
-ShibRequestSetting requireSession true
-#require shib-attr homeOrganization unifr.ch
-require  valid-user
-
-#AuthType shibboleth 
-
-#ShibRequireSession On 
-
-#require homeOrganization unifr.ch
-
-require shib-attr mail Lorenz.Baumer@unige.ch
-require shib-attr mail maelle.andrey@unifr.ch
-require shib-attr mail anael.antille@unifr.ch 
-require shib-attr mail estelle.baur@unifr.ch
-require shib-attr mail yanick.bourqui@unifr.ch
-require shib-attr mail yan.charriere@unifr.ch
-require shib-attr mail elodie.clivaz@unifr.ch
-require shib-attr mail ali.curty@unifr.ch 
-require shib-attr mail sylviecamelia.delaloye@unifr.ch
-require shib-attr mail joel.demotz@unifr.ch
-require shib-attr mail magdalena.depowska@unifr.ch 
-require shib-attr mail clelia.dumas@unifr.ch 
-require shib-attr mail daniele.durdov@unifr.ch
-require shib-attr mail adeline.favre@unifr.ch
-require shib-attr mail marie.gyger@unifr.ch
-require shib-attr mail emilie.guyaz@unifr.ch
-require shib-attr mail stephan.gutzwiller@unifr.ch
-require shib-attr mail paul-emile.mottiez@unifr.ch
-require shib-attr mail emanuela.negrini@unifr.ch
-require shib-attr mail fanny.padoan@unifr.ch
-require shib-attr mail pauline.rouiller@unifr.ch 
-require shib-attr mail leonora.saliju@unifr.ch
-require shib-attr mail fabio.spadini@unifr.ch
-require shib-attr mail kevin.reymond@unifr.ch
-require shib-attr mail marc.spicher@unifr.ch
-require shib-attr mail alexandre.varela@unifr.ch
-
-require shib-attr mail brigitte.roux@unige.ch
-require shib-attr mail patrizia.birchler@unige.ch
-
-# Use the front controller as index file. It serves as fallback solution when
+# Use the front controller as index file. It serves as a fallback solution when
 # every other rewrite/redirect fails (e.g. in an aliased environment without
 # mod_rewrite). Additionally, this reduces the matching process for the
-# startpage (path "/") because otherwise Apache will apply the rewritting rules
+# start page (path "/") because otherwise Apache will apply the rewriting rules
 # to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).
-
-#DirectoryIndex app.php
+DirectoryIndex app.php
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-
-#RewriteCond %{HTTP_HOST} ^www3\.unifr\.ch$ [NC]
-#RewriteRule ^(.*)$ http://elearning.unifr.ch/callisto/$1 [L,R]
 
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
@@ -70,13 +18,17 @@ require shib-attr mail patrizia.birchler@unige.ch
     RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
     RewriteRule ^(.*) - [E=BASE:%1]
 
+    # Sets the HTTP_AUTHORIZATION header removed by apache
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
     # Redirect to URI without front controller to prevent duplicate content
     # (with and without `/app.php`). Only do this redirect on the initial
     # rewrite by Apache and not on subsequent cycles. Otherwise we would get an
     # endless redirect loop (request -> rewrite to front controller ->
     # redirect -> request -> ...).
     # So in case you get a "too many redirects" error or you always get redirected
-    # to the startpage because your Apache does not expose the REDIRECT_STATUS
+    # to the start page because your Apache does not expose the REDIRECT_STATUS
     # environment variable, you have 2 choices:
     # - disable this feature by commenting the following 2 lines or
     # - use Apache >= 2.3.9 and replace all L flags by END flags and remove the
@@ -96,7 +48,7 @@ require shib-attr mail patrizia.birchler@unige.ch
 <IfModule !mod_rewrite.c>
     <IfModule mod_alias.c>
         # When mod_rewrite is not available, we instruct a temporary redirect of
-        # the startpage to the front controller explicitly so that the website
+        # the start page to the front controller explicitly so that the website
         # and the generated links can still be used.
         RedirectMatch 302 ^/$ /app.php/
         # RedirectTemp cannot be used instead
