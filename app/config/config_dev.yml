@@ -34,3 +34,8 @@ sonata_media:
     cdn:
         server:
              path: /uploads/media
+
+vich_uploader:
+    mappings:
+        document:
+            uri_prefix:         /files/documents

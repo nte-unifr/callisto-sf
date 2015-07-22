@@ -204,7 +204,6 @@ vich_uploader:
 
     mappings:
         document:
-            uri_prefix:         /files/documents
             upload_destination: %kernel.root_dir%/../web/files/documents
 
             inject_on_load:     true

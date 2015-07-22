@@ -26,3 +26,8 @@ sonata_media:
     cdn:
         server:
              path: /callisto/uploads/media
+
+vich_uploader:
+    mappings:
+        document:
+            uri_prefix:         /callisto/files/documents
