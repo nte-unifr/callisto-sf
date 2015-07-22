@@ -205,6 +205,7 @@ vich_uploader:
     mappings:
         document:
             upload_destination: %kernel.root_dir%/../web/uploads/files/documents
+            namer:              vich_uploader.namer_uniqid
             inject_on_load:     true
             delete_on_update:   true
             delete_on_remove:   true
