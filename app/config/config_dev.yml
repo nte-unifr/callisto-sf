@@ -38,4 +38,4 @@ sonata_media:
 vich_uploader:
     mappings:
         document:
-            uri_prefix:         /files/documents
+            uri_prefix: /uploads/files/documents
