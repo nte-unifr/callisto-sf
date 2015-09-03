@@ -61,7 +61,7 @@ doctrine:
 
         types:
             json: Sonata\Doctrine\Types\JsonType
-            DocumentType: Callisto\FichesBundle\DBAL\Types\DocumentType
+            ResourceType: Callisto\FichesBundle\DBAL\Types\ResourceType
 
     orm:
         auto_generate_proxy_classes: %kernel.debug%

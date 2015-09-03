@@ -14,6 +14,8 @@ use Callisto\FichesBundle\Entity\Document;
 
 class DocumentsAdmin extends Admin
 {
+    protected $classnameLabel = "Ressources internes";
+
     // LIST FIELDS
     /**
      * @param ListMapper $listMapper
@@ -53,8 +55,9 @@ class DocumentsAdmin extends Admin
     {
         $formMapper
             ->add('title', null, array('required' => true, 'label' => 'Titre'))
+            ->add('description', null, array('required' => false, 'label' => 'Description'))
             ->add('type', null, array('required' => true, 'label' => 'Type'))
-            ->add('file', 'vich_file', array('required' => true, 'label' => false, 'allow_delete'  => false))
+            ->add('file', 'vich_file', array('required' => false, 'label' => false, 'allow_delete'  => false))
         ;
     }
 

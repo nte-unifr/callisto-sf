@@ -1,0 +1,16 @@
+{# src/Callisto/FichesBundle/Resources/views/Resources/index/others.html.twig #}
+
+{% if others|length > 0 %}
+    <ul class="nav nav-tabs nav-stacked resources">
+        {% for other in others %}
+            <li>
+                <a href="{{ vich_uploader_asset(other, 'file') }}">
+                    <h2 style="margin-bottom:-5px"><i class="fa fa-file-pdf-o"></i> {{ other.title }}</h2>
+                    <p>{{ other.description }}</p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Aucun document</p>
+{% endif %}

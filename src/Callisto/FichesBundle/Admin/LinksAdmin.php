@@ -14,6 +14,8 @@ use Callisto\FichesBundle\Entity\Link;
 
 class LinksAdmin extends Admin
 {
+    protected $classnameLabel = "Ressources externes";
+
     // LIST FIELDS
     /**
      * @param ListMapper $listMapper
@@ -23,7 +25,7 @@ class LinksAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('title', null, array('label' => 'Titre'))
-            ->add('value', null, array('label' => 'Url'))
+            ->add('type', null, array('label' => 'Type'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
@@ -34,7 +36,16 @@ class LinksAdmin extends Admin
     }
 
     // LIST FILTERS
-    // no filters
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('title')
+            ->add('type')
+        ;
+    }
 
     // FORM FIELDS
     /**
@@ -44,7 +55,9 @@ class LinksAdmin extends Admin
     {
         $formMapper
             ->add('title', null, array('required' => true, 'label' => 'Titre'))
+            ->add('description', null, array('required' => false, 'label' => 'Description'))
             ->add('value', null, array('required' => true, 'label' => 'Url'))
+            ->add('type', null, array('required' => true, 'label' => 'Type'))
         ;
     }
 

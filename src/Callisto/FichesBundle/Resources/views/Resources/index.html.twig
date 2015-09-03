@@ -3,38 +3,36 @@
 {% extends "CallistoFichesBundle:Default:index.html.twig" %}
 
 {% block callisto_content %}
-    <div class="page-header">
-        <h1>Ressources</h1>
+    <div class="row">
+        <div class="span12">
+            <div class="page-header">
+                <h1>Ressources</h1>
+            </div>
+        </div>
     </div>
 
-    {% if ((links|length)+(tbs|length)+(sts|length)) < 1 %}
-        <p>Aucune ressource disponible</p>
-    {% endif %}
+    <div class="row">
+        <div class="span12">
+            <ul class="nav nav-tabs" id="resourcesTab">
+                <li class="active"><a href="#links">Ressources en ligne</a></li>
+                <li><a href="#tbs">Bibliographies thématiques</a></li>
+                <li><a href="#others">Autres documents</a></li>
+            </ul>
 
-    {% if links|length > 0 %}
-        <h2>Ressources en ligne</h2>
-        <ul class="nav nav-tabs nav-stacked resources">
-            {% for link in links %}
-                <li><a href="{{ link.value }}">{{ link.title }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+            <div class="tab-content">
+                <div class="tab-pane active" id="links">{% include "CallistoFichesBundle:Resources:index/links.html.twig" %}</div>
+                <div class="tab-pane" id="tbs">{% include "CallistoFichesBundle:Resources:index/tbs.html.twig" %}</div>
+                <div class="tab-pane" id="others">{% include "CallistoFichesBundle:Resources:index/others.html.twig" %}</div>
+            </div>
+        </div>
+    </div>
 
-    {% if tbs|length > 0 %}
-        <h2>Bibliographies thématiques</h2>
-        <ul class="nav nav-tabs nav-stacked resources">
-            {% for tb in tbs %}
-                <li><a href="{{ vich_uploader_asset(tb, 'file') }}"><i class="fa fa-file-pdf-o"></i> {{ tb.title }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% if sts|length > 0 %}
-        <h2>Documents PDF</h2>
-        <ul class="nav nav-tabs nav-stacked resources">
-            {% for st in sts %}
-                <li><a href="{{ vich_uploader_asset(st, 'file') }}"><i class="fa fa-file-pdf-o"></i> {{ st.title }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <script>
+        $(function () {
+            $('#resourcesTab a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        })
+    </script>
 {% endblock %}
