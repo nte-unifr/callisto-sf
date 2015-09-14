@@ -1,3 +1,4 @@
+umask(0000);
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
