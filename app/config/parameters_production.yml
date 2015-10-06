@@ -1,10 +1,10 @@
 parameters:
     database_driver: pdo_mysql
-    database_host: mysql2.unifr.ch
+    database_host: 127.0.0.1
     database_port: ~
-    database_name: 10477_callisto
-    database_user: 10477_callisto
-    database_password: WjZP2A4QM4WE?WmZ
+    database_name: callisto
+    database_user: callisto_user
+    database_password: ***REMOVED***
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: ~
