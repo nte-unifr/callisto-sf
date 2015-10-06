@@ -1,17 +1,17 @@
 <?php
 
 namespace Callisto\FichesBundle\Admin;
- 
+
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
- 
+
 use Knp\Menu\ItemInterface as MenuItemInterface;
- 
+
 use Callisto\FichesBundle\Entity\Pages;
- 
+
 class PagesAdmin extends Admin
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -25,17 +25,13 @@ class PagesAdmin extends Admin
     {
         $datagrid
             ->add('title')
-            ->add('introduction')
-            ->add('text')
         ;
     }
-    
+
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->add('title')
-            ->add('introduction', 'html')
-            ->add('text', 'html')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array(),
@@ -61,13 +57,11 @@ class PagesAdmin extends Admin
             ->end()
         ;
     }
-     
+
     /**
-     
     * {@inheritdoc}
-     
     */
-     
+
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
