@@ -5,13 +5,6 @@
 # to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).
 DirectoryIndex app.php
 
-# Force user to authenticate on protected-directory
-<Location /recherche>
-  AuthType shibboleth
-  ShibRequestSetting requireSession true
-  Require shib-attr homeOrganizationType university uas
-</Location>
-
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
