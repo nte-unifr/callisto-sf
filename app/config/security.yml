@@ -67,6 +67,10 @@ security:
         - { path: ^/admin, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
+        # use https on prod
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https, host: unifr\.ch$ }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http, host: localhost$ }
+
 
     acl:
         connection: default
