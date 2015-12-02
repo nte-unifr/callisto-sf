@@ -36,7 +36,7 @@ class Document
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -185,7 +185,7 @@ class Document
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -208,7 +208,7 @@ class Document
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
