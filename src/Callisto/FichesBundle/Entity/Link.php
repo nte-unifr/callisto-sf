@@ -33,7 +33,7 @@ class Link
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -145,7 +145,7 @@ class Link
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
