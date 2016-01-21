@@ -5,11 +5,15 @@ use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 
 class ResourceType extends AbstractEnumType
 {
-    const OT = 'Autre';
-    const TB = 'Bibliographie Thématique';
+    const OT = 'OT';
+    const TB = 'TB';
+    const GBA = 'GBA';
+    const GBP = 'GBP';
 
     protected static $choices = [
-        self::OT => 'Autre',
-        self::TB => 'Bibliographie Thématique'
+        self::OT => 'Autre ressource',
+        self::TB => 'Bibliographie thématique',
+        self::GBA => 'Bibliographie générale toutes périodes',
+        self::GBP => 'Bibliographie générale par période'
     ];
 }

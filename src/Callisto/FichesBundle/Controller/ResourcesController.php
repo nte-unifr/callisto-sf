@@ -14,18 +14,14 @@ class ResourcesController extends Controller
     public function indexAction()
     {
         $repository = $this->getDoctrine()->getRepository('CallistoFichesBundle:Link');
-        $links      = $repository->findByType("Autre");
-        $extTBs     = $repository->findByType("Bibliographie Thématique");
+        $links   = $repository->findAll();
 
         $repository = $this->getDoctrine()->getRepository('CallistoFichesBundle:Document');
-        $others     = $repository->findByType("Autre");
-        $intTBs     = $repository->findByType("Bibliographie Thématique");
+        $documents = $repository->findAll();
 
         return $this->render('CallistoFichesBundle:Resources:index.html.twig', array(
-            'links'     => $links,
-            'extTBs'    => $extTBs,
-            'others'    => $others,
-            'intTBs'    => $intTBs,
+            'links'  => $links,
+            'documents' => $documents,
             'titre'     => "Ressources"
         ));
     }

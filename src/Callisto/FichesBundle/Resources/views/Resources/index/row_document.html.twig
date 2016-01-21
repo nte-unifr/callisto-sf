@@ -1,0 +1,12 @@
+<tr>
+    <td>
+        <b>{{ element.title }}</b>
+        <p>{{ element.description }}</p>
+    </td>
+    <td>{{ element.type|readable }}</td>
+    <td>
+        <a href="{{ vich_uploader_asset(element, 'file') }}" class="btn">
+            <i class="fa fa-file-pdf-o"></i>
+        </a>
+    </td>
+</tr>

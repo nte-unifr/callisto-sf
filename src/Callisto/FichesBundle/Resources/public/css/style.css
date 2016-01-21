@@ -95,3 +95,6 @@ h1 {
 .resources a {
     text-decoration: none;
 }
+.container {
+    width: 1200px;
+}
