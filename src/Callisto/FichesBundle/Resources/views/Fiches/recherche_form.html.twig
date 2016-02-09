@@ -68,13 +68,13 @@ h2 {
 }
 
 #label_handle_recherche_fiches_datefrom, #label_handle_recherche_fiches_dateto {
-    width: 40px; 
-    float: left; 
+    width: 40px;
+    float: left;
 }
 
 #recherche_fiches_datefrom, #recherche_fiches_dateto {
-    width: 260px; 
-    float: left; 
+    width: 260px;
+    float: left;
     margin-right: 10px;
 }
 
@@ -110,19 +110,19 @@ h2 {
             <strong>RECHERCHE PAR DATE</strong><br /><br />
             {{ form_label(form.datefrom) }}
             {{ form_widget(form.datefrom) }}
-            
+
             {{ form_label(form.dateto) }}
             {{ form_widget(form.dateto) }}
         </div>
     </div>
-    
+
     <div class="row-fluid navy">
         <div class="span12">
             <strong>RECHERCHE PAR MOTS</strong>
             {{ form_widget(form.titre, { 'attr': {'class': 'span12'} }) }}<br />
         </div>
     </div>
-    
+
     <div class="row-fluid navy">
         <div class="span6">
             <strong>CATEGORIE</strong>
@@ -133,12 +133,12 @@ h2 {
             {{ form_widget(form.id, { 'attr': {'class': 'span11'} }) }}
         </div>
     </div>
-    
+
     {{ form_widget(form._token) }}
-    
+
     <div class="row-fluid navy">
         <div class="span6">
-            <input type="submit" value="Recherche" class="btn" />   
+            <input type="submit" value="Recherche" class="btn" />
         </div>
         <div class="span6">
             <div class="buttonImage" style="width:150px;margin:10px 10px;"onclick="resetQuery();">
@@ -177,7 +177,7 @@ h2 {
                       </td>
                       <td>
                         {{ fiche.materiau }} [<strong>{{ fiche.dateFrom }}</strong> <C3><A0> <strong>{{ fiche.dateTo }}</strong>]
-                        <p align="justify"><em>{{ fiche.description }}</em></p>
+                        <p align="justify"><em>{{ fiche.description|raw }}</em></p>
                       </td>
                     </tr>
 
