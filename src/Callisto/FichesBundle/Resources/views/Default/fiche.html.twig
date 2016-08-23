@@ -164,7 +164,11 @@
 
     <div>
         <h1 id="title">Fiche n°{{ fiche.id }} : {{ fiche.titre|raw }}</h1>
-        <p>server : {{ dump(server) }}</p>
+        <ul>
+            {% for s in server %}
+                <li>{{ s }}</li>
+            {% endfor %}
+        </ul>
     </div>
 
 {% if(alert) %}
