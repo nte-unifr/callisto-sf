@@ -7,7 +7,7 @@
         <script src='{{ asset('bundles/callistofiches/js/jquery.elevateZoom-3.0.3.min.js') }}'></script>
 {% endblock %}
 
-{% if shib %}
+{% if shib === 1 %}
   {% block callisto_sideblock %}
       {% if fiches_recherche|length > 0 and fiche.id in recherche %}
       <div>
