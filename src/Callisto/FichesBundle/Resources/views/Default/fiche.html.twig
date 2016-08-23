@@ -84,11 +84,11 @@
                 {% else %}
                     <span style="color:#aaa"><<< r&eacute;sultat pr&eacute;c&eacute;dent</span>
                 {% endif %}
-                
+
                 {% if(recherche) %}
-                &nbsp; {% if nav_type != 'a' %}<a href="{{ path('recherche') }}">{% else %}<a href="{{ path('rechercheavancee') }}">{% endif %}<strong>Retour aux r&eacute;sultats</strong></a> &nbsp; 
+                &nbsp; {% if nav_type != 'a' %}<a href="{{ path('recherche') }}">{% else %}<a href="{{ path('rechercheavancee') }}">{% endif %}<strong>Retour aux r&eacute;sultats</strong></a> &nbsp;
                 {% endif %}
-                
+
                 {% if(next) %}
                 <a href="{{ path('fiche', { 'id': next, 'form': nav_type }) }}">
                      r&eacute;sultat suivant >>>
@@ -98,7 +98,7 @@
                 {% endif %}
             {% endif %}
 
-        
+
         <script type="text/javascript" src="{{ asset('bundles/callistofiches/js/jQuery-Storage-API/jquery.storageapi.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/callistofiches/js/jstorage.js') }}"></script>
         <div style="float: right; text-align: right;" class="droite">
@@ -156,7 +156,7 @@
                     <h3>Envoyer la s&eacute;lection par e-mail</h3>
                 </div>
                 <div class="modal-body" id="panier-body">
-                    
+
                 </div>
               </div>
             </div>
@@ -164,6 +164,8 @@
 
     <div>
         <h1 id="title">Fiche n°{{ fiche.id }} : {{ fiche.titre|raw }}</h1>
+        <p>mail : {{ mail }}</p>
+        <p>remote mail : {{ remote_mail }}</p>
     </div>
 
 {% if(alert) %}
@@ -191,10 +193,10 @@
                     <script>
                         function popwindow(url, id) {
                             if (id == 'image_principale') {
-                                var height = document.getElementById(id).height * 3; 
+                                var height = document.getElementById(id).height * 3;
                                 var width = document.getElementById(id).width * 3;
                             } else {
-                                var height = document.getElementById(id).height * 6; 
+                                var height = document.getElementById(id).height * 6;
                                 var width = document.getElementById(id).width * 6;
                             }
                             window.open(url,'Illustration','height='+height+',width='+width);
@@ -238,16 +240,16 @@
                             zoomWindowPosition: 5,
                             responsive: true,
                             scrollZoom : true,
-                        }); 
+                        });
 
                         $("#select").change(function(e){
                             var currentValue = $("#select").val();
-                            if(currentValue == 0){    
+                            if(currentValue == 0){
                                 smallImage = "{% path fiche.image, 'small' %}";
                                 largeImage = "{% path fiche.image, 'big' %}";
                             }
                             {% for annexe in fiche.images %}
-                            if(currentValue == {{ loop.index }}){    
+                            if(currentValue == {{ loop.index }}){
                                 smallImage = "{% path annexe.media, 'small' %}";
                                 largeImage = "{% path annexe.media, 'big' %}";
                             }
@@ -255,10 +257,10 @@
                             // Example of using Active Gallery
                             $('#gallery a').removeClass('active').eq(currentValue-1).addClass('active');
 
-                            var ez =   $('#image_principale').data('elevateZoom');	  
+                            var ez =   $('#image_principale').data('elevateZoom');
 
-                            ez.swaptheimage(smallImage, largeImage); 
-                             
+                            ez.swaptheimage(smallImage, largeImage);
+
                         });
 
                     </script>
@@ -375,7 +377,7 @@
         <h2><strong>IMAGES ANNEXES</strong></h2>
         <p>
 <!--            <div class="annexes">
-                <a class="fancybox" href="{% path fiche.image, 'ppt' %}">{% media fiche.image, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a> 
+                <a class="fancybox" href="{% path fiche.image, 'ppt' %}">{% media fiche.image, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a>
                 &nbsp;<a href="{% path fiche.image, 'ppt' %}">PPT</a><br />
                 &nbsp;<a href="{% path fiche.image, 'big' %}">Orginal</a>
             </div>
@@ -384,7 +386,7 @@
             {% set id_image %}image_annexe_{{ loop.index}}{% endset %}
             <div class="annexes">
 <!--                <a class="fancybox" rel="group" href="{% path annexe.media, 'ppt' %}">{% media annexe.media, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a> -->
-                <a href="{% path annexe.media, 'ppt' %}" onclick="popwindow('{% path annexe.media, 'big' %}', '{{ id_image }}');return false;">{% media annexe.media, 'thumb' with {'alt': fiche.titre, 'align': 'left', 'id': id_image} %}</a> 
+                <a href="{% path annexe.media, 'ppt' %}" onclick="popwindow('{% path annexe.media, 'big' %}', '{{ id_image }}');return false;">{% media annexe.media, 'thumb' with {'alt': fiche.titre, 'align': 'left', 'id': id_image} %}</a>
                 &nbsp;<a href="{% path annexe.media, 'ppt' %}" onclick="popwindow('{% path annexe.media, 'ppt' %}', 'image_principale');return false;">PPT</a><br />
                 &nbsp;<a href="{% path annexe.media, 'reference' %}" onclick="popwindow('{% path annexe.media, 'reference' %}', 'image_principale');return false;">Orginal</a>
             </div>

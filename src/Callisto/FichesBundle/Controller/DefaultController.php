@@ -360,6 +360,8 @@ class DefaultController extends Controller
             'alert' => $alert,
             'derniere_recherche' => $session->get('derniere_recherche'),
             'nav_type' => $request->get('form'),
+            'mail' => $request->server->get('mail'),
+            'remote_mail' => $request->server->get('***REMOVED***')
         );
     }
 
