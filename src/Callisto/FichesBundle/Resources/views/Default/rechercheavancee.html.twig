@@ -65,13 +65,13 @@ $(function() {
     }
 
     #label_handle_rechercheavancee_datefrom, #label_handle_rechercheavancee_dateto {
-        width: 40px; 
-        float: left; 
+        width: 40px;
+        float: left;
     }
 
     #rechercheavancee_datefrom, #rechercheavancee_dateto {
-        width: 260px; 
-        float: left; 
+        width: 260px;
+        float: left;
         margin-right: 10px;
     }
 
@@ -99,7 +99,7 @@ var cat = function(id, value) {
   select = '<select class="form" name="categorie_'+(id)+'" style="width:100%">';
   {% for cat in categories %}
   select = select + '<option value="{{ cat.id }}"';
-  if(value == '{{cat.id}}') { 
+  if(value == '{{cat.id}}') {
     select = select + ' selected="selected"';
   }
   select = select + '>{{ cat.nom }}</option>';
@@ -111,7 +111,7 @@ var per = function(id, value) {
   select = '<select class="form" name="periode_'+(id)+'" style="width:100%">';
   {% for per in periodes %}
   select = select + '<option value="{{ per.id }}"';
-  if(value == '{{per.id}}') { 
+  if(value == '{{per.id}}') {
     select = select + ' selected="selected"';
   }
   select = select + '>{{ per.nom }}</option>';
@@ -123,7 +123,7 @@ var mat = function(id, value) {
   select = '<select class="form" name="materiau_'+(id)+'" style="width:100%">';
   {% for mat in materiaux %}
   select = select + '<option value="{{ mat.id }}"';
-  if(value == '{{mat.id}}') { 
+  if(value == '{{mat.id}}') {
     select = select + ' selected="selected"';
   }
   select = select + '>{{ mat.nom }}</option>';
@@ -288,7 +288,7 @@ function resetQuery() {
                     <br />
                     {{ form_label(form.datefrom) }}
                     {{ form_widget(form.datefrom) }}
-                    
+
                     {{ form_label(form.dateto) }}
                     {{ form_widget(form.dateto) }}
                 </div>
@@ -405,11 +405,13 @@ function resetQuery() {
                   </thead>
                   <tbody>
                     <tr>
-                      <td width="10%" height="120">
-                        <a href="{{ path('fiche', { 'id': fiche.id }) }}" class="liste">
-                          <img src="{% path fiche.image, 'thumb' %}" width="32" border="0">
-                        </a>
-                      </td>
+                      {% if shib %}
+                        <td width="10%" height="120">
+                          <a href="{{ path('fiche', { 'id': fiche.id }) }}" class="liste">
+                            <img src="{% path fiche.image, 'thumb' %}" width="32" border="0">
+                          </a>
+                        </td>
+                      {% endif %}
                       <td>
                         {{ fiche.materiau }} [<strong>{{ fiche.dateFrom }}</strong> <C3><A0> <strong>{{ fiche.dateTo }}</strong>]
                         <p align="justify"><em>{{ fiche.description|raw }}</em></p>
@@ -436,4 +438,3 @@ function resetQuery() {
   </div>
   {% endif %}
 {% endblock %}
-
