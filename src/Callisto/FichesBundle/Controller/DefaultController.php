@@ -711,6 +711,7 @@ class DefaultController extends Controller
             'rechercheavancee_data' => $session->get('rechercheavancee_data'),
             'fiches' => $fiches,
             'nav_type' => 'a',
+            'shib' => $session->get('isUserShibAuthenticated')
             ));
     }
 //*********************** Recherche avancée *********************************//
