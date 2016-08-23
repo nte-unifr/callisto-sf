@@ -248,6 +248,7 @@ class DefaultController extends Controller
             'fiches' => $fiches,
             'nb_fiches' => $nb_fiches,
             'nav_type' => 'n',
+            'shib' => $session->get('isUserShibAuthenticated')
         ));
     }
 

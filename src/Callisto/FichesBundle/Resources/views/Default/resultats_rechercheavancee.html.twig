@@ -53,13 +53,13 @@ h2 {
 }
 
 #label_handle_recherche_fiches_datefrom, #label_handle_recherche_fiches_dateto {
-    width: 40px; 
-    float: left; 
+    width: 40px;
+    float: left;
 }
 
 #recherche_fiches_datefrom, #recherche_fiches_dateto {
-    width: 260px; 
-    float: left; 
+    width: 260px;
+    float: left;
     margin-right: 10px;
 }
 
@@ -100,11 +100,13 @@ h2 {
                   </thead>
                   <tbody>
                     <tr>
-                      <td width="10%" height="120">
-                        <a href="{{ path('fiche', { 'id': fiche.id }) }}" class="liste">
-                          <img src="{% path fiche.image, 'thumb' %}" width="32" border="0">
-                        </a>
-                      </td>
+                      {% if shib %}
+                        <td width="10%" height="120">
+                          <a href="{{ path('fiche', { 'id': fiche.id }) }}" class="liste">
+                            <img src="{% path fiche.image, 'thumb' %}" width="32" border="0">
+                          </a>
+                        </td>
+                      {% endif %}
                       <td>
                         {{ fiche.materiau }} [<strong>{{ fiche.dateFrom }}</strong> <C3><A0> <strong>{{ fiche.dateTo }}</strong>]
                         <p align="justify"><em>{{ fiche.description|raw }}</em></p>
@@ -131,4 +133,3 @@ h2 {
   </div>
 
 {% endblock %}
-
