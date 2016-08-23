@@ -28,10 +28,11 @@ class DefaultController extends Controller
     public function shibAction()
     {
         $this->get('session')->set('isUserShibAuthenticated', true);
+        $this->redirect($this->generateUrl('home'));
     }
 
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      * @Template()
      */
     public function indexAction()
