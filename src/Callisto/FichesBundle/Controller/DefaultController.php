@@ -28,7 +28,7 @@ class DefaultController extends Controller
     public function shibAction()
     {
         $this->get('session')->set('isUserShibAuthenticated', true);
-        return $this->redirect($this->generateUrl('home'));
+        return $this->redirect($this->generateUrl('recherche'));
     }
 
     /**

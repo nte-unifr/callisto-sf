@@ -98,3 +98,9 @@ h1 {
 .container {
     width: 1200px;
 }
+#shib {
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 20px;
+  color: #069;
+}
