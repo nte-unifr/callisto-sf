@@ -394,7 +394,7 @@ class DefaultController extends Controller
         return array(
             'titre' => 'Imprimer le panier',
             'titles' => $titles,
-            'shib' => $session->get('isUserShibAuthenticated')
+            'shib' => $this->getRequest()->getSession()->get('isUserShibAuthenticated')
         );
     }
 
@@ -430,7 +430,7 @@ class DefaultController extends Controller
             'fiche' => $fiche,
             'similaires' => $similaires,
             'c' => count($fiche->getfichesassociees()),
-            'shib' => $session->get('isUserShibAuthenticated')
+            'shib' => $this->getRequest()->getSession()->get('isUserShibAuthenticated')
         );
     }
 
