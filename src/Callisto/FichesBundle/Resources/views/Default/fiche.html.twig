@@ -164,7 +164,7 @@
 
     <div>
         <h1 id="title">Fiche n°{{ fiche.id }} : {{ fiche.titre|raw }}</h1>
-        <p>server : {{ server }}</p>
+        <p>server : {{ dump(server) }}</p>
     </div>
 
 {% if(alert) %}
