@@ -164,16 +164,7 @@
 
     <div>
         <h1 id="title">Fiche n°{{ fiche.id }} : {{ fiche.titre|raw }}</h1>
-        <ul>
-            {% for key, value in server %}
-                <li>{{ key }} : {{ value }}</li>
-            {% endfor %}
-        </ul>
-        <ul>
-            {% for key, value in session %}
-                <li>{{ key }} : {{ value }}</li>
-            {% endfor %}
-        </ul>
+        <p>Shib : {{ shib }}</p>
     </div>
 
 {% if(alert) %}
