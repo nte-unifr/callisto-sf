@@ -24,7 +24,7 @@
 <!--            margin: -10px 0;-->
 <!--        }-->
     </style>
-    
+
 </head>
 <body style="width: 90%; margin: auto;">
     <div>
@@ -33,6 +33,7 @@
 
     <table>
         <tr>
+          {% if shib %}
             <td style="vertical-align: top">
                 <h2><strong>ILLUSTRATION</strong></h2>
                 <p>
@@ -46,6 +47,7 @@
                     <a href="{% path fiche.image, 'big' %}" target="_blank">Original</a>
                 </p>
             </td>
+          {% endif %}
             <td style="vertical-align: top">
                 <h2><strong>DESCRIPTION</strong></h2>
                 <p>
@@ -159,26 +161,27 @@
             {% endif %}
         </p>
     </div>
-
-    <div>
-        <h2><strong>IMAGES ANNEXES</strong></h2><br />
-        <p>
-<!--            <div class="annexes">
-                <a class="fancybox" href="{% path fiche.image, 'ppt' %}">{% media fiche.image, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a> 
-                &nbsp;<a href="{% path fiche.image, 'ppt' %}">PPT</a><br />
-                &nbsp;<a href="{% path fiche.image, 'big' %}">Orginal</a>
-            </div>
--->
-            {% for annexe in fiche.images %}
-            <div class="annexes">
-                <a class="fancybox" rel="group" href="{% path annexe.media, 'ppt' %}">{% media annexe.media, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a> 
-                &nbsp;<a href="{% path annexe.media, 'ppt' %}">PPT</a><br />
-                &nbsp;<a href="{% path annexe.media, 'big' %}">Orginal</a>
-            </div>
-            {% endfor %}
-                <div class="clear">
-        </p>
-    </div>
+    {% if shib %}
+      <div>
+          <h2><strong>IMAGES ANNEXES</strong></h2><br />
+          <p>
+  <!--            <div class="annexes">
+                  <a class="fancybox" href="{% path fiche.image, 'ppt' %}">{% media fiche.image, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a>
+                  &nbsp;<a href="{% path fiche.image, 'ppt' %}">PPT</a><br />
+                  &nbsp;<a href="{% path fiche.image, 'big' %}">Orginal</a>
+              </div>
+  -->
+              {% for annexe in fiche.images %}
+              <div class="annexes">
+                  <a class="fancybox" rel="group" href="{% path annexe.media, 'ppt' %}">{% media annexe.media, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a>
+                  &nbsp;<a href="{% path annexe.media, 'ppt' %}">PPT</a><br />
+                  &nbsp;<a href="{% path annexe.media, 'big' %}">Orginal</a>
+              </div>
+              {% endfor %}
+                  <div class="clear">
+          </p>
+      </div>
+    {% endif %}
 
     <div>
         <h2><strong>FICHES ASSOCIÉES</strong> ~ <strong>APERCU DES FICHES</strong></h2>
@@ -219,7 +222,7 @@
             <p>Aucun fichier associé.</p>
         {% endif %}
     </div>
-    
+
     <br><br><hr />
     <a href="{{ path('fiche', { 'id': fiche.id }) }}">{{ url('fiche', { 'id': fiche.id }) }}</a>
     <br><br>
