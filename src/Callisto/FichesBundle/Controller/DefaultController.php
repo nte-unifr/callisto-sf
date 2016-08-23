@@ -32,7 +32,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/", name="home")
+     * @Route("/")
      * @Template()
      */
     public function indexAction()
