@@ -181,14 +181,17 @@
 
     <table>
         <tr>
+          {% if shib %}
             <td width="190">
                 <h2><strong>ILLUSTRATION</strong></h2>
             </td>
+          {% endif %}
             <td style="padding-left: 10px;">
                 <h2><strong>DESCRIPTION</strong></h2>
             </td>
         </tr>
         <tr>
+          {% if shib %}
             <td style="padding-top: 8px;">
                 <div>
 <!--                    <a class="fancybox" rel="group" href="{% path fiche.image, 'big' %}">-->
@@ -268,6 +271,7 @@
                     </script>
                 </div>
             </td>
+          {% endif %}
             <td style="vertical-align: top; padding-left: 10px;">
                 <p>
                     {% if fiche.description %}
