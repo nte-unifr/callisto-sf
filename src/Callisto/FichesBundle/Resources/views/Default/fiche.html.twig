@@ -7,73 +7,75 @@
         <script src='{{ asset('bundles/callistofiches/js/jquery.elevateZoom-3.0.3.min.js') }}'></script>
 {% endblock %}
 
-{% block callisto_sideblock %}
-    {% if fiches_recherche|length > 0 and fiche.id in recherche %}
-    <div>
-        <span><strong>RECHERCHE</strong></span><br><br>
-        <ul id="mycarousel1" class="jcarousel jcarousel-skin-tango">
-            {% for rechch in fiches_recherche %}
-            {% if rechch.image %}
-            <li>
-                <a href="{{ path('fiche', { 'id': rechch.id }) }}" title="{{ rechch.titre }}">
-                    {% media rechch.image, 'small' with {'alt':  rechch.titre, 'title':  rechch.titre} %}
-                </a>
-            </li>
-            {% endif %}
-            {% endfor %}
-        </ul>
-        <br><br>
-    </div>
-    {% endif %}
-    {% if fiche.fichesassociees|length > 0 %}
-    <div>
-        <span><strong>FICHES ASSOCI&eacute;ES</strong></span><br><br>
-        <ul id="mycarousel2" class="jcarousel jcarousel-skin-tango">
-            {% for associee in fiche.fichesassociees %}
-            {% if associee.image %}
-            <li>
-                <a href="{{ path('fiche', { 'id': associee.id }) }}" title="{{ associee.titre }}">
-                    {% media associee.image, 'small' with {'alt':  associee.titre, 'title':  associee.titre} %}
-                </a>
-            </li>
-            {% endif %}
-            {% endfor %}
-        </ul>
-        <br><br>
-    </div>
-    {% endif %}
-    <div>
-        <span><strong>IMAGES SIMILAIRES</strong></span><br><br>
-        <ul id="mycarousel3" class="jcarousel jcarousel-skin-tango">
-            {% for sim in similaires %}
-            {% if sim.image %}
-            <li>
-                <a href="{{ path('fiche', { 'id': sim.id }) }}">
-                    {% thumbnail sim.image, 'small' with {'alt':  sim.titre, 'title':  sim.titre} %}
-                </a>
-            </li>
-            {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
-{% endblock %}
+{% if shib %}
+  {% block callisto_sideblock %}
+      {% if fiches_recherche|length > 0 and fiche.id in recherche %}
+      <div>
+          <span><strong>RECHERCHE</strong></span><br><br>
+          <ul id="mycarousel1" class="jcarousel jcarousel-skin-tango">
+              {% for rechch in fiches_recherche %}
+              {% if rechch.image %}
+              <li>
+                  <a href="{{ path('fiche', { 'id': rechch.id }) }}" title="{{ rechch.titre }}">
+                      {% media rechch.image, 'small' with {'alt':  rechch.titre, 'title':  rechch.titre} %}
+                  </a>
+              </li>
+              {% endif %}
+              {% endfor %}
+          </ul>
+          <br><br>
+      </div>
+      {% endif %}
+      {% if fiche.fichesassociees|length > 0 %}
+      <div>
+          <span><strong>FICHES ASSOCI&eacute;ES</strong></span><br><br>
+          <ul id="mycarousel2" class="jcarousel jcarousel-skin-tango">
+              {% for associee in fiche.fichesassociees %}
+              {% if associee.image %}
+              <li>
+                  <a href="{{ path('fiche', { 'id': associee.id }) }}" title="{{ associee.titre }}">
+                      {% media associee.image, 'small' with {'alt':  associee.titre, 'title':  associee.titre} %}
+                  </a>
+              </li>
+              {% endif %}
+              {% endfor %}
+          </ul>
+          <br><br>
+      </div>
+      {% endif %}
+      <div>
+          <span><strong>IMAGES SIMILAIRES</strong></span><br><br>
+          <ul id="mycarousel3" class="jcarousel jcarousel-skin-tango">
+              {% for sim in similaires %}
+              {% if sim.image %}
+              <li>
+                  <a href="{{ path('fiche', { 'id': sim.id }) }}">
+                      {% thumbnail sim.image, 'small' with {'alt':  sim.titre, 'title':  sim.titre} %}
+                  </a>
+              </li>
+              {% endif %}
+              {% endfor %}
+          </ul>
+      </div>
+  {% endblock %}
 
-{% block callisto_sideblock2 %}
-    <div>
-        <span><strong>IMAGES SIMILAIRES</strong></span><br><br>
-        <ul id="mycarousel" class="jcarousel jcarousel-skin-tango">
-            {% for sim in similaires %}
-            {% if sim.image %}
-            <li>
-                <a href="{{ path('fiche', { 'id': sim.id }) }}">
-                    {% thumbnail sim.image, 'small' with {'alt':  sim.titre, 'title':  sim.titre} %}
-                </a>
-            </li>
-            {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
-{% endblock %}
+  {% block callisto_sideblock2 %}
+      <div>
+          <span><strong>IMAGES SIMILAIRES</strong></span><br><br>
+          <ul id="mycarousel" class="jcarousel jcarousel-skin-tango">
+              {% for sim in similaires %}
+              {% if sim.image %}
+              <li>
+                  <a href="{{ path('fiche', { 'id': sim.id }) }}">
+                      {% thumbnail sim.image, 'small' with {'alt':  sim.titre, 'title':  sim.titre} %}
+                  </a>
+              </li>
+              {% endif %}
+              {% endfor %}
+          </ul>
+      </div>
+  {% endblock %}
+{% endif %}
 
 {% block callisto_content %}
             {% if fiche.id in recherche %}
@@ -164,7 +166,6 @@
 
     <div>
         <h1 id="title">Fiche n°{{ fiche.id }} : {{ fiche.titre|raw }}</h1>
-        <p>Shib : {{ app.session.get('shib') }}</p>
     </div>
 
 {% if(alert) %}

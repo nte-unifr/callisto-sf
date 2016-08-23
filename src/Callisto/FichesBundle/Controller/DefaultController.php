@@ -368,7 +368,8 @@ class DefaultController extends Controller
             'emailform'  => $emailform->createView(),
             'alert' => $alert,
             'derniere_recherche' => $session->get('derniere_recherche'),
-            'nav_type' => $request->get('form')
+            'nav_type' => $request->get('form'),
+            'shib' => $session->get('isUserShibAuthenticated')
         );
     }
 
