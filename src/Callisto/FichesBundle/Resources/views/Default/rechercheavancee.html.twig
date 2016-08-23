@@ -94,6 +94,8 @@ $(function() {
     <a href="{{ path('recherche') }}">Standard</a>&nbsp;|&nbsp;<strong>Avancé</strong>
 </div>
 
+<div>{% include 'shib.html.twig' %}</div>
+
 <script type="text/javascript">
 var cat = function(id, value) {
   select = '<select class="form" name="categorie_'+(id)+'" style="width:100%">';

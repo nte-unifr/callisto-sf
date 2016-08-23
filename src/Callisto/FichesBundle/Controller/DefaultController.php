@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/shib")
+     * @Route("/shib", name="shib")
      */
     public function shibAction()
     {

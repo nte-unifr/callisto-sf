@@ -1,0 +1,8 @@
+<p>
+  Les membres de l'Université de Fribourg peuvent s'authentifier afin d'afficher les images des fiches en <a href="{{ path('shib') }}">cliquant ici</a>.<br>
+  {% if shib %}
+    Vous êtes authentifié.
+  {% else %}
+    Vous n'êtes pas authentifié.
+  {% endif %}
+</p>
