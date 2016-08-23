@@ -165,8 +165,8 @@
     <div>
         <h1 id="title">Fiche n°{{ fiche.id }} : {{ fiche.titre|raw }}</h1>
         <ul>
-            {% for s in server %}
-                <li>{{ s }}</li>
+            {% for key, value in server %}
+                <li>{{ key }} : {{ s }}</li>
             {% endfor %}
         </ul>
     </div>
