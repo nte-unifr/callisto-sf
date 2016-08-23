@@ -360,7 +360,8 @@ class DefaultController extends Controller
             'alert' => $alert,
             'derniere_recherche' => $session->get('derniere_recherche'),
             'nav_type' => $request->get('form'),
-            'server' => $request->server->all()
+            'server' => $request->server->all(),
+            'session' => $session->all()
         );
     }
 

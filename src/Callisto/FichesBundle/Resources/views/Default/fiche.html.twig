@@ -169,6 +169,11 @@
                 <li>{{ key }} : {{ value }}</li>
             {% endfor %}
         </ul>
+        <ul>
+            {% for key, value in session %}
+                <li>{{ key }} : {{ value }}</li>
+            {% endfor %}
+        </ul>
     </div>
 
 {% if(alert) %}
