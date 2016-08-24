@@ -412,11 +412,13 @@
                         {{ associee.id }}.
                         <a href="{{ path('fiche', { 'id': associee.id, 'form': nav_type }) }}" target="_blank">{{ associee.titre }}</a>
                     </td>
-                    <td>
-                        <a class="fancybox" href="{% path associee.image, 'big' %}">
-                            {% media associee.image, 'thumb' with {'alt':  associee.titre} %}
-                        </a>
-                    </td>
+                    {% if shib %}
+                      <td>
+                          <a class="fancybox" href="{% path associee.image, 'big' %}">
+                              {% media associee.image, 'thumb' with {'alt':  associee.titre} %}
+                          </a>
+                      </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </table>
