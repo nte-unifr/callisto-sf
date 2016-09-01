@@ -45,3 +45,5 @@
 /config/deploy/*
 /config/deploy.rb
 /lib/capistrano/*
+
+.DS_Store
