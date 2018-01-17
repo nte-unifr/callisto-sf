@@ -47,3 +47,4 @@
 /lib/capistrano/*
 
 .DS_Store
+/log
