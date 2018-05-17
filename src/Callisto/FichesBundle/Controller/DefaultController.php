@@ -141,11 +141,11 @@ class DefaultController extends Controller
                                         .' OR f.provenance LIKE :provenance_'.$i.' OR f.region LIKE :region_'.$i
                                         .' OR f.source LIKE :source_'.$i.' OR f.bibliographie LIKE :bibliographie_'.$i )
                                 ->setParameter('titre_'.$i, '%'.$keyword.'%')
-                                ->setParameter('description_'.$i, '%'.$keyword.'%')
+                                ->setParameter('description_'.$i, '%'.htmlentities($keyword).'%')
                                 ->setParameter('provenance_'.$i, '%'.$keyword.'%')
                                 ->setParameter('region_'.$i, '%'.$keyword.'%')
-                                ->setParameter('source_'.$i, '%'.$keyword.'%')
-                                ->setParameter('bibliographie_'.$i, '%'.$keyword.'%');
+                                ->setParameter('source_'.$i, '%'.htmlentities($keyword).'%')
+                                ->setParameter('bibliographie_'.$i, '%'.htmlentities($keyword).'%');
                         $i++;
                     }
 
