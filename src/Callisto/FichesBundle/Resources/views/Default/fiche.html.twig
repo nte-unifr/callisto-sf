@@ -385,7 +385,7 @@
   <!--            <div class="annexes">
                   <a class="fancybox" href="{% path fiche.image, 'ppt' %}">{% media fiche.image, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a>
                   &nbsp;<a href="{% path fiche.image, 'ppt' %}">PPT</a><br />
-                  &nbsp;<a href="{% path fiche.image, 'big' %}">Orginal</a>
+                  &nbsp;<a href="{% path fiche.image, 'big' %}">Original</a>
               </div>
   -->
               {% for annexe in fiche.images %}
@@ -394,7 +394,7 @@
   <!--                <a class="fancybox" rel="group" href="{% path annexe.media, 'ppt' %}">{% media annexe.media, 'thumb' with {'alt':  fiche.titre, 'align': 'left'} %}</a> -->
                   <a href="{% path annexe.media, 'ppt' %}" onclick="popwindow('{% path annexe.media, 'big' %}', '{{ id_image }}');return false;">{% media annexe.media, 'thumb' with {'alt': fiche.titre, 'align': 'left', 'id': id_image} %}</a>
                   &nbsp;<a href="{% path annexe.media, 'ppt' %}" onclick="popwindow('{% path annexe.media, 'ppt' %}', 'image_principale');return false;">PPT</a><br />
-                  &nbsp;<a href="{% path annexe.media, 'reference' %}" onclick="popwindow('{% path annexe.media, 'reference' %}', 'image_principale');return false;">Orginal</a>
+                  &nbsp;<a href="{% path annexe.media, 'reference' %}" onclick="popwindow('{% path annexe.media, 'reference' %}', 'image_principale');return false;">Original</a>
               </div>
               {% endfor %}
               <div class="clear"></div>
