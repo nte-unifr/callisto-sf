@@ -202,7 +202,8 @@ class FichesAdmin extends Admin
                             'inline' => 'table',
                         ))
                     ->add('fichiers', 'sonata_type_model_list', array('required' => false), array('link_parameters' => array('context' => 'default', 'provider'=>'sonata.media.provider.file')))
-                ->end()
+                    ->add('publicImage', null, array('required' => false))
+                    ->end()
                 ->with('Critères')
                     ->add('materiau')
                     ->add('categorie')
@@ -216,7 +217,8 @@ class FichesAdmin extends Admin
                     'description' => 'Description de l\'objet',
                     'fichesassociees' => 'Sélection multiple avec shift+clic',
                     'public' => 'Seules les fiches portant le symbole <i class="icon-ok-circle"></i> sont accessibles',
-                    'publication' => 'Pour que l\'auteur puisse resoumettre la fiche, décocher l\'option.'
+                    'publication' => 'Pour que l\'auteur puisse resoumettre la fiche, décocher l\'option.',
+                    'publicImage' => 'Si coché, les images seront affichées même sans authentification AAI.'
                 ))
                 ->end()
             ;

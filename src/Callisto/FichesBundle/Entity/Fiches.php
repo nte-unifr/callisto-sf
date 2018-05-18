@@ -205,6 +205,13 @@ class Fiches
     private $montrer_auteur = false;
 
     /**
+     * @var boolean $public_image
+     *
+     * @ORM\Column(name="public_image", type="boolean")
+     */
+    private $publicImage = false;
+
+    /**
      * Set id
      *
      * @return Fiches
@@ -864,5 +871,28 @@ class Fiches
     public function getPublication()
     {
         return $this->publication;
+    }
+
+    /**
+     * Set publicImage
+     *
+     * @param boolean $publicImage
+     * @return Fiches
+     */
+    public function setPublicImage($publicImage)
+    {
+        $this->publicImage = $publicImage;
+
+        return $this;
+    }
+
+    /**
+     * Get publicImage
+     *
+     * @return boolean 
+     */
+    public function getPublicImage()
+    {
+        return $this->publicImage;
     }
 }

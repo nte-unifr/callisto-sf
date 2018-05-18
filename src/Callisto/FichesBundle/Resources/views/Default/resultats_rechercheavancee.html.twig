@@ -100,7 +100,7 @@ h2 {
                   </thead>
                   <tbody>
                     <tr>
-                      {% if shib %}
+                      {% if shib or fiche.publicImage %}
                         <td width="10%" height="120">
                           <a href="{{ path('fiche', { 'id': fiche.id }) }}" class="liste">
                             <img src="{% path fiche.image, 'thumb' %}" width="32" border="0">

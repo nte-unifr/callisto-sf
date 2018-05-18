@@ -181,7 +181,7 @@
 
     <table>
         <tr>
-          {% if shib %}
+          {% if shib or fiche.publicImage %}
             <td width="190">
                 <h2><strong>ILLUSTRATION</strong></h2>
             </td>
@@ -191,7 +191,7 @@
             </td>
         </tr>
         <tr>
-          {% if shib %}
+          {% if shib or fiche.publicImage %}
             <td style="padding-top: 8px;">
                 <div>
 <!--                    <a class="fancybox" rel="group" href="{% path fiche.image, 'big' %}">-->
@@ -378,7 +378,7 @@
             {% endif %}
         </p>
     </div>
-    {% if shib %}
+    {% if shib or fiche.publicImage %}
       <div>
           <h2><strong>IMAGES ANNEXES</strong></h2>
           <p>
@@ -412,7 +412,7 @@
                         {{ associee.id }}.
                         <a href="{{ path('fiche', { 'id': associee.id, 'form': nav_type }) }}" target="_blank">{{ associee.titre }}</a>
                     </td>
-                    {% if shib %}
+                    {% if shib or fiche.publicImage %}
                       <td>
                           <a class="fancybox" href="{% path associee.image, 'big' %}">
                               {% media associee.image, 'thumb' with {'alt':  associee.titre} %}
